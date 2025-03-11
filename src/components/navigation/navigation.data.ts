@@ -2,15 +2,15 @@ import type { Navigation } from '@/interfaces/navigation'
 
 export const navigations: Navigation[] = [
   {
-    label: 'Home',
+    label: 'Inicio',
     path: '#', // '/',
   },
   {
-    label: 'Courses',
+    label: 'Productos',
     path: 'popular-course', // '/popular-course',
   },
   {
-    label: 'Testimonial',
+    label: 'Preguntas Frecuentes',
     path: 'testimonial', // '/testimonial',
   },
   {

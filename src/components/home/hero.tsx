@@ -18,16 +18,16 @@ interface ExpItemProps {
 
 const exps: Array<Exp> = [
   {
-    label: 'Students',
-    value: '10K+',
+    label: 'Modelos',
+    value: '25 +',
   },
   {
-    label: 'Quality Course',
-    value: '20+',
+    label: 'Clientes',
+    value: '200 +',
   },
   {
-    label: 'Experience Mentors',
-    value: '10+',
+    label: 'Experiencia',
+    value: '10 años +',
   },
 ]
 
@@ -83,21 +83,21 @@ const HomeHero: FC = () => {
                       backgroundColor: 'unset',
                     }}
                   >
-                    Improve{' '}
+                    Potencia Eléctrica{' '}
                     <Box
                       sx={{
                         position: 'absolute',
                         top: { xs: 24, md: 34 },
                         left: 2,
                         transform: 'rotate(3deg)',
-                        '& img': { width: { xs: 146, md: 210 }, height: 'auto' },
+                        '& img': { width: { xs: 146, md: 280 }, height: 'auto' },
                       }}
                     >
                       {/* eslint-disable-next-line */}
                       <img src="/images/headline-curve.svg" alt="Headline curve" />
                     </Box>
                   </Typography>
-                  your{' '}
+                  {' '}
                   <Typography
                     component="span"
                     sx={{
@@ -113,7 +113,6 @@ const HomeHero: FC = () => {
                       },
                     }}
                   >
-                    Skill
                     <svg version="1.1" viewBox="0 0 3183 3072">
                       <g id="Layer_x0020_1">
                         <path
@@ -132,13 +131,13 @@ const HomeHero: FC = () => {
                     </svg>
                   </Typography>{' '}
                   <br />
-                  with Different Way
+                  sin límites.
                 </Typography>
               </Box>
               <Box sx={{ mb: 4, width: { xs: '100%', md: '70%' } }}>
                 <Typography sx={{ color: 'text.secondary', lineHeight: 1.6 }}>
                   {
-                    "Let's take an online course to improve your skills in a different way, you can set your own study time according to your learning speed. So you san study comfortable and absorb tge material easily."
+                    "En Litonix, revolucionamos la movilidad con motos eléctricas de alto rendimiento, combinando innovación, eficiencia y diseño vanguardista. Experimenta la potencia sostenible y el futuro de la conducción."
                   }
                 </Typography>
               </Box>
@@ -149,7 +148,7 @@ const HomeHero: FC = () => {
                   </StyledButton>
                 </ScrollLink>
                 <ScrollLink to="video-section" spy={true} smooth={true} offset={0} duration={350}>
-                  <StyledButton color="primary" size="large" variant="outlined" startIcon={<PlayArrowIcon />}>
+                  <StyledButton color="primary" size="large" variant="outlined">
                     Watch Video
                   </StyledButton>
                 </ScrollLink>
@@ -157,52 +156,8 @@ const HomeHero: FC = () => {
             </Box>
           </Grid>
           <Grid item xs={12} md={5} sx={{ position: 'relative' }}>
-            {/* Sertificate badge */}
-            <Box
-              sx={{
-                position: 'absolute',
-                bottom: 30,
-                left: { xs: 0, md: -150 },
-                boxShadow: 1,
-                borderRadius: 3,
-                px: 2,
-                py: 1.4,
-                zIndex: 1,
-                backgroundColor: 'background.paper',
-                display: 'flex',
-                alignItems: 'flex-start',
-                width: 280,
-              }}
-            >
-              <Box
-                sx={{
-                  boxShadow: 1,
-                  borderRadius: '50%',
-                  width: 44,
-                  height: 44,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  mr: 2,
-                  '& img': { width: '32px !important', height: 'auto' },
-                }}
-              >
-                <Image src="/images/certificate.png" alt="Certificate icon" width={50} height={50} quality={97} />
-              </Box>
-              <Box>
-                <Typography
-                  component="h6"
-                  sx={{ color: 'secondary.main', fontSize: '1.1rem', fontWeight: 700, mb: 0.5 }}
-                >
-                  Certificate
-                </Typography>
-                <Typography variant="subtitle1" sx={{ color: 'text.secondary', lineHeight: 1.3 }}>
-                  There are certificates for all courses.
-                </Typography>
-              </Box>
-            </Box>
             <Box sx={{ lineHeight: 0 }}>
-              <Image src="/images/home-hero.jpg" width={775} height={787} alt="Hero img" />
+              <Image src="/images/Inicio-Moto.jpg" width={775} height={787} alt="Moto Inicio img1" />
             </Box>
           </Grid>
         </Grid>

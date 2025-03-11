@@ -1,3 +1,4 @@
+/*
 import React, { FC } from 'react'
 import Box from '@mui/material/Box'
 import { StyledButton } from '@/components/styled-button'
@@ -12,5 +13,6 @@ const AuthNavigation: FC = () => {
     </Box>
   )
 }
+  export default AuthNavigation
+*/
 
-export default AuthNavigation
