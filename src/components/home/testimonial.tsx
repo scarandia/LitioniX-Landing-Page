@@ -63,7 +63,8 @@ const HomeTestimonial: FC = () => {
   }
 
   return (
-    <Box id="testimonial" sx={{ pb: { xs: 6, md: 10 }, backgroundColor: 'background.paper' }}>
+    //Color Seccion Testimonios
+    <Box id="testimonial" sx={{ pb: { xs: 6, md: 10 }, backgroundColor: '' }}>
       <Container>
         <Grid container spacing={5}>
           <Grid item xs={12} md={6}>
@@ -114,7 +115,7 @@ const HomeTestimonial: FC = () => {
           </Grid>
           <Grid item xs={12} md={6} sx={{ display: { xs: 'none', md: 'block' } }}>
             <Box sx={{ width: { xs: '100%', md: '90%' } }}>
-              <Image src="/images/home-testimonial.png" width={520} height={540} quality={97} alt="Testimonial img" />
+              <Image src="/images/Testimonio2.png" width={520} height={540} quality={97} alt="Testimonial img" />
             </Box>
           </Grid>
         </Grid>

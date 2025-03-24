@@ -12,23 +12,23 @@ interface Data {
 
 export const data: Data[] = [
   {
-    title: 'Easy Accessable',
-    description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore',
+    title: 'Innovación eléctrica.',
+    description: 'Reduce la huella de carbono con un transporte eficiente y ecológico.',
     icon: <ArtTrackIcon />,
   },
   {
-    title: 'More Affordable Cost',
-    description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore',
+    title: 'Precios Competitivos',
+    description: 'Disfruta de una alternativa asequible con menores costos en combustible',
     icon: <AttachMoneyIcon />,
   },
   {
-    title: 'Flexible Study Time',
-    description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore',
+    title: 'Batería de larga duración',
+    description: 'Autonomía extendida para viajes más largos sin preocuparte por la carga.',
     icon: <LocalLibraryIcon />,
   },
   {
-    title: 'Consultation With Mentor',
-    description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore',
+    title: 'La opción inteligente',
+    description: 'Comodidad, eficiencia y tecnología en un solo vehículo.',
     icon: <ContactSupportIcon />,
   },
 ]

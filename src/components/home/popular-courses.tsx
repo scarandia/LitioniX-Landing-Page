@@ -8,6 +8,8 @@ import { useTheme, styled } from '@mui/material/styles'
 import { IconButton, useMediaQuery } from '@mui/material'
 import IconArrowBack from '@mui/icons-material/ArrowBack'
 import IconArrowForward from '@mui/icons-material/ArrowForward'
+import ExperienceSection from '../others/ExperienceSection'
+
 
 import { data } from './popular-course.data'
 import { CourseCardItem } from '@/components/course'
@@ -90,6 +92,7 @@ const HomePopularCourse: FC = () => {
       }}
     >
       <Container maxWidth="lg">
+        <ExperienceSection />
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
             <Box

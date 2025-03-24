@@ -8,48 +8,22 @@ import { Link as ScrollLink } from 'react-scroll'
 import { StyledButton } from '@/components/styled-button'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 
-interface Exp {
-  label: string
-  value: string
-}
-interface ExpItemProps {
-  item: Exp
-}
-
-const exps: Array<Exp> = [
-  {
-    label: 'Modelos',
-    value: '25 +',
-  },
-  {
-    label: 'Clientes',
-    value: '200 +',
-  },
-  {
-    label: 'Experiencia',
-    value: '10 años +',
-  },
-]
-
-const ExpItem: FC<ExpItemProps> = ({ item }) => {
-  const { value, label } = item
-  return (
-    <Box sx={{ textAlign: 'center', mb: { xs: 1, md: 0 } }}>
-      <Typography
-        sx={{ color: 'secondary.main', mb: { xs: 1, md: 2 }, fontSize: { xs: 34, md: 44 }, fontWeight: 'bold' }}
-      >
-        {value}
-      </Typography>
-      <Typography color="text.secondary" variant="h5">
-        {label}
-      </Typography>
-    </Box>
-  )
-}
-
 const HomeHero: FC = () => {
   return (
-    <Box id="hero" sx={{ backgroundColor: 'background.paper', position: 'relative', pt: 4, pb: { xs: 8, md: 10 } }}>
+    //Color Seccion Inicio
+    <Box
+      id="hero"
+      sx={{
+        backgroundColor: '',
+        backgroundImage: 'url(/images/Banner_2.png)', // Añade la imagen de fondo aquí
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        position: 'relative',
+        pt: 8,
+        pb: { xs: 12, md: 16 },
+        color: 'white', // Asegúrate de que el texto sea visible sobre la imagen
+      }}
+    >
       <Container maxWidth="lg">
         <Grid container spacing={0} sx={{ flexDirection: { xs: 'column', md: 'unset' } }}>
           <Grid item xs={12} md={7}>
@@ -60,6 +34,8 @@ const HomeHero: FC = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
+                ml: { xs: 0, md: -18 }, //Margen izquierdo
+                mt: 12, //Margen Superior
               }}
             >
               <Box sx={{ mb: 3 }}>
@@ -67,7 +43,7 @@ const HomeHero: FC = () => {
                   component="h2"
                   sx={{
                     position: 'relative',
-                    fontSize: { xs: 40, md: 72 },
+                    fontSize: { xs: 50, md: 80 },
                     letterSpacing: 1.5,
                     fontWeight: 'bold',
                     lineHeight: 1.3,
@@ -77,7 +53,7 @@ const HomeHero: FC = () => {
                     component="mark"
                     sx={{
                       position: 'relative',
-                      color: 'primary.main',
+                      color: '#ACBED8',
                       fontSize: 'inherit',
                       fontWeight: 'inherit',
                       backgroundColor: 'unset',
@@ -88,9 +64,9 @@ const HomeHero: FC = () => {
                       sx={{
                         position: 'absolute',
                         top: { xs: 24, md: 34 },
-                        left: 2,
+                        left: 40,
                         transform: 'rotate(3deg)',
-                        '& img': { width: { xs: 146, md: 280 }, height: 'auto' },
+                        '& img': { width: { xs: 146, md: 210 }, height: 'auto' },
                       }}
                     >
                       {/* eslint-disable-next-line */}
@@ -137,19 +113,19 @@ const HomeHero: FC = () => {
               <Box sx={{ mb: 4, width: { xs: '100%', md: '70%' } }}>
                 <Typography sx={{ color: 'text.secondary', lineHeight: 1.6 }}>
                   {
-                    "En Litonix, revolucionamos la movilidad con motos eléctricas de alto rendimiento, combinando innovación, eficiencia y diseño vanguardista. Experimenta la potencia sostenible y el futuro de la conducción."
+                    ""
                   }
                 </Typography>
               </Box>
               <Box sx={{ '& button': { mr: 2 } }}>
                 <ScrollLink to="popular-course" spy={true} smooth={true} offset={0} duration={350}>
                   <StyledButton color="primary" size="large" variant="contained">
-                    Get Started
+                    Conoce Más
                   </StyledButton>
                 </ScrollLink>
                 <ScrollLink to="video-section" spy={true} smooth={true} offset={0} duration={350}>
                   <StyledButton color="primary" size="large" variant="outlined">
-                    Watch Video
+                    Ver Video
                   </StyledButton>
                 </ScrollLink>
               </Box>
@@ -157,21 +133,9 @@ const HomeHero: FC = () => {
           </Grid>
           <Grid item xs={12} md={5} sx={{ position: 'relative' }}>
             <Box sx={{ lineHeight: 0 }}>
-              <Image src="/images/Inicio-Moto.jpg" width={775} height={787} alt="Moto Inicio img1" />
             </Box>
           </Grid>
         </Grid>
-
-        {/* Experience */}
-        <Box sx={{ boxShadow: 2, py: 4, px: 7, borderRadius: 4 }}>
-          <Grid container spacing={2}>
-            {exps.map((item) => (
-              <Grid key={item.value} item xs={12} md={4}>
-                <ExpItem item={item} />
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
       </Container>
     </Box>
   )
