@@ -9,10 +9,12 @@ import { IconButton, useMediaQuery } from '@mui/material'
 import IconArrowBack from '@mui/icons-material/ArrowBack'
 import IconArrowForward from '@mui/icons-material/ArrowForward'
 import ExperienceSection from '../others/ExperienceSection'
+import ProductGrid from '../product/ProductGrid'
 
 
-import { data } from './popular-course.data'
+import { data } from './popular-products.data'
 import { CourseCardItem } from '@/components/course'
+import FullScreenSlider from '../product/FullScreenSlider'
 
 interface SliderArrowArrow {
   onClick?: () => void
@@ -93,6 +95,14 @@ const HomePopularCourse: FC = () => {
     >
       <Container maxWidth="lg">
         <ExperienceSection />
+
+        {/* Tipos de productos */}
+        <Box sx={{ mt: 4 }}>
+          <ProductGrid />
+        </Box>
+        <Box sx={{ mt: 4, backgroundColor: '#fff' }}>
+          <FullScreenSlider />
+        </Box>
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
             <Box
@@ -109,7 +119,6 @@ const HomePopularCourse: FC = () => {
               </Typography>
             </Box>
           </Grid>
-
           <Grid item xs={12} md={9}>
             <Slider {...sliderConfig}>
               {data.map((item) => (

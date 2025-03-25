@@ -38,7 +38,7 @@ const BorderLinearProgress = styled(LinearProgress, {
 const HomeFeature: FC = () => {
   return (
     //Color Seccion beneficios
-    <Box id="feature" sx={{ py: { xs: 10, md: 14 }, backgroundColor: '#7B9E89' }}>
+    <Box id="feature" sx={{ py: { xs: 10, md: 14 }, backgroundColor: '#127C71' }}>
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={12} md={5}>

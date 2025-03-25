@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { Box, Typography } from '@mui/material'
+import Link from 'next/link'
 
 interface Props {
   onClick?: () => void
@@ -9,13 +10,15 @@ interface Props {
 const Logo: FC<Props> = ({ onClick, variant }) => {
   return (
     <Box onClick={onClick}>
-      <Typography
-        variant="h4"
-        component="h1"
-        sx={{ fontWeight: 900, '& span': { color: variant === 'primary' ? 'primary.main' : 'unset' } }}
-      >
-        Litioni<span>X</span>
-      </Typography>
+      <Link href="/" passHref>
+        <Typography
+          variant="h4"
+          component="h1"
+          sx={{ fontWeight: 900, '& span': { color: variant === 'primary' ? 'primary.main' : 'unset' } }}
+        >
+          Litioni<span>X</span>
+        </Typography>
+      </Link>
     </Box>
   )
 }

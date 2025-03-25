@@ -9,7 +9,7 @@ import { useTheme, styled } from '@mui/material/styles'
 import IconArrowBack from '@mui/icons-material/ArrowBack'
 import IconArrowForward from '@mui/icons-material/ArrowForward'
 import { MentorCardItem } from '@/components/mentor'
-import { data } from './mentors.data'
+import { data } from './products.data'
 
 interface SliderArrowArrow {
   onClick?: () => void
