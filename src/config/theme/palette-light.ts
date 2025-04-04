@@ -5,7 +5,7 @@ const palette: PaletteOptions = {
   mode: 'light',
   background: {
     //Color seccion Productos
-    default: '#ACBED8', //'#fdfdfd',
+    default: '#fdfdfd', //'#fdfdfd',
     paper: common.white,
   },
   text: {

@@ -15,13 +15,23 @@ const HomeHero: FC = () => {
       id="hero"
       sx={{
         backgroundColor: '',
-        backgroundImage: 'url(/images/Banner_2.png)', // Añade la imagen de fondo aquí
+        backgroundImage: 'url(/images/Banners_Backgrounds/Banner/Banner7_edit.jpg)', // Background image
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         position: 'relative',
         pt: 8,
         pb: { xs: 12, md: 16 },
-        color: 'white', // Asegúrate de que el texto sea visible sobre la imagen
+        color: '#D95D39', //texto "sin limites"
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.2)', // Semi-transparent overlay
+          zIndex: 1,
+        },
       }}
     >
       <Container maxWidth="lg">
@@ -53,7 +63,7 @@ const HomeHero: FC = () => {
                     component="mark"
                     sx={{
                       position: 'relative',
-                      color: '#ACBED8',
+                      color: '#D95D39',
                       fontSize: 'inherit',
                       fontWeight: 'inherit',
                       backgroundColor: 'unset',
@@ -69,8 +79,6 @@ const HomeHero: FC = () => {
                         '& img': { width: { xs: 146, md: 210 }, height: 'auto' },
                       }}
                     >
-                      {/* eslint-disable-next-line */}
-                      <img src="/images/headline-curve.svg" alt="Headline curve" />
                     </Box>
                   </Typography>
                   {' '}
@@ -89,22 +97,6 @@ const HomeHero: FC = () => {
                       },
                     }}
                   >
-                    <svg version="1.1" viewBox="0 0 3183 3072">
-                      <g id="Layer_x0020_1">
-                        <path
-                          fill="#127C71"
-                          d="M2600 224c0,0 0,0 0,0 236,198 259,562 52,809 -254,303 -1849,2089 -2221,1776 -301,-190 917,-1964 1363,-2496 207,-247 570,-287 806,-89z"
-                        />
-                        <path
-                          fill="#127C71"
-                          d="M3166 2190c0,0 0,0 0,0 64,210 -58,443 -270,516 -260,90 -1848,585 -1948,252 -104,-230 1262,-860 1718,-1018 212,-73 437,39 500,250z"
-                        />
-                        <path
-                          fill="#127C71"
-                          d="M566 3c0,0 0,0 0,0 -219,-26 -427,134 -462,356 -44,271 -255,1921 90,1962 245,62 628,-1392 704,-1869 36,-221 -114,-424 -332,-449z"
-                        />
-                      </g>
-                    </svg>
                   </Typography>{' '}
                   <br />
                   sin límites.

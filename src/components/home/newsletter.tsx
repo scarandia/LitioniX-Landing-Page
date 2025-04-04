@@ -43,7 +43,7 @@ const HomeNewsLetter: FC = () => {
                 mr: { xs: 0, md: 3 },
                 mb: { xs: 2, md: 0 },
               }}
-              placeholder="Ingresa tu correo electrónico"
+              placeholder="Haznos saber tus consultas!"
             />
             <Box>
               <StyledButton disableHoverEffect size="large">

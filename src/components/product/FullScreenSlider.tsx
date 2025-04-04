@@ -7,21 +7,21 @@ import Image from 'next/image'
 const vehicles = [
     {
         name: 'Modelo 1',
-        imageUrl: '/images/products/bic1.jpg',
+        imageUrl: '/images/products/Moto_IA1.png',
         speed: '75 km/h',
         autonomy: '200 km',
         price: '$2220',
     },
     {
         name: 'Modelo 2',
-        imageUrl: '/images/products/van1.png',
+        imageUrl: '/images/products/Moto_IA2.png',
         speed: '80 km/h',
         autonomy: '250 km',
         price: '$2500',
     },
     {
         name: 'Modelo 3',
-        imageUrl: '/images/products/41.jpg',
+        imageUrl: '/images/products/van.png',
         speed: '90 km/h',
         autonomy: '300 km',
         price: '$3000',
@@ -41,38 +41,63 @@ const FullScreenSlider: FC = () => {
     }
 
     return (
-        <Box sx={{ width: '100%', height: '100vh', overflow: 'hidden' }}>
+        <Box sx={{ width: '100%', height: '92vh', overflow: 'hidden', backgroundImage: 'url(/images/Banners_Backgrounds/Slider_Background2.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', transparency: 0.4 }}>
             <Slider {...sliderConfig}>
                 {vehicles.map((vehicle, index) => (
                     <Box
                         key={index}
                         sx={{
                             position: 'relative',
-                            width: '100%',
-                            height: '100vh',
+                            width: '100%', // Asegura que el contenedor ocupe todo el ancho del slider
+                            height: '100vh', // Asegura que el contenedor ocupe toda la altura del slider
+                            display: 'flex',
+                            alignItems: 'center', // Centra verticalmente
+                            justifyContent: 'center', // Centra horizontalmente
                         }}
                     >
-                        {/* Imagen de fondo */}
-                        <Image
-                            src={vehicle.imageUrl}
-                            alt={vehicle.name}
-                            layout="fill"
-                            objectFit="cover"
-                            quality={100}
+                        {/* Contenedor de la imagen del producto */}
+                        <Box
+                            sx={{
+                                marginLeft: 20,
+                                position: 'relative',
+                                width: '70%', // Ajusta el ancho de la imagen
+                                height: '80%', // Ajusta la altura de la imagen
+                                zIndex: 2, // Asegura que esté sobre el fondo
+                            }}
+                        >
+                            <Image
+                                src={vehicle.imageUrl}
+                                alt={vehicle.name}
+                                layout="fill"
+                                objectFit="contain" // Mantiene las proporciones de la imagen
+                                quality={100}
+                            />
+                        </Box>
+                        {/* Capa de transparencia */}
+                        <Box
+                            sx={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                width: '100%',
+                                height: '100%',
+                                backgroundColor: 'rgba(0, 0, 0, 0.4)', // Ajusta la transparencia aquí
+                                zIndex: -1,
+                            }}
                         />
 
                         {/* Contenedor de características */}
                         <Box
                             sx={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '10%',
-                                transform: 'translateY(-50%)',
-                                color: 'white',
+                                marginLeft: 45,
+                                position: 'relative',
+                                zIndex: 3, // Asegura que esté sobre el fondo
                                 backgroundColor: 'rgba(0, 0, 0, 0.5)',
                                 padding: 4,
                                 borderRadius: 2,
+                                color: 'white',
                                 maxWidth: '400px',
+                                textAlign: 'center', // Centra el texto dentro del contenedor
                             }}
                         >
                             <Typography variant="h2" sx={{ fontSize: '2rem', fontWeight: 'bold', mb: 2 }}>

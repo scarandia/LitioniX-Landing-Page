@@ -7,7 +7,7 @@ import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import CircularProgress from '@mui/material/CircularProgress'
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress'
-import { data } from './feature.data'
+import { data } from './benefits.data'
 
 interface LinearProgressProps {
   order: number
@@ -38,43 +38,29 @@ const BorderLinearProgress = styled(LinearProgress, {
 const HomeFeature: FC = () => {
   return (
     //Color Seccion beneficios
-    <Box id="feature" sx={{ py: { xs: 10, md: 14 }, backgroundColor: '#127C71' }}>
+    <Box id="feature" sx={{ py: { xs: 10, md: 14 }, backgroundColor: '#7B9E89' }}>
+
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={12} md={5}>
             <Box sx={{ position: 'relative', mt: 13 }}>
               <Image src="/images/Beneficios.png" width={690} height={424} quality={100} alt="Feature img" />
-              <Box
-                sx={{
-                  position: 'absolute',
-                  top: -36,
-                  right: { xs: 0, md: -36 },
-                  boxShadow: 2,
-                  borderRadius: 1,
-                  px: 2.2,
-                  py: 1.4,
-                  zIndex: 1,
-                  backgroundColor: 'background.paper',
-                  width: 190,
-                }}
-              >
-              </Box>
+            </Box>
 
-              <Box
-                sx={{
-                  position: 'absolute',
-                  bottom: -12,
-                  left: { xs: 0, md: -24 },
-                  boxShadow: 2,
-                  borderRadius: 1,
-                  px: 2.2,
-                  py: 2,
-                  zIndex: 1,
-                  backgroundColor: 'background.paper',
-                  textAlign: 'center',
-                }}
-              >
-              </Box>
+            <Box
+              sx={{
+                position: 'absolute',
+                bottom: -12,
+                left: { xs: 0, md: -24 },
+                boxShadow: 2,
+                borderRadius: 1,
+                px: 2.2,
+                py: 2,
+                zIndex: 1,
+                backgroundColor: 'background.paper',
+                textAlign: 'center',
+              }}
+            >
             </Box>
           </Grid>
           <Grid item xs={12} md={7}>
@@ -95,7 +81,7 @@ const HomeFeature: FC = () => {
                 component="mark"
                 sx={{
                   position: 'relative',
-                  color: 'primary.main',
+                  color: 'white',
                   fontSize: 'inherit',
                   fontWeight: 'inherit',
                   backgroundColor: 'unset',

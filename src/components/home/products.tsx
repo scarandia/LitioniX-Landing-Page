@@ -88,12 +88,12 @@ const HomeOurMentors: FC = () => {
           xs: 8,
           md: 12,
         },
-        backgroundColor: '#ACBED8',
+        backgroundColor: '#7B9E89',
       }}
     >
       <Container maxWidth="lg">
         <Typography variant="h1" sx={{ fontSize: 40 }}>
-          Contáctanos
+          Contactos
         </Typography>
 
         <Slider {...sliderConfig}>
