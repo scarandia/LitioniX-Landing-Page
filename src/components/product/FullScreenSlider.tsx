@@ -21,7 +21,7 @@ const vehicles = [
     },
     {
         name: 'Modelo 3',
-        imageUrl: '/images/products/van.png',
+        imageUrl: '/images/products/van2.png',
         speed: '90 km/h',
         autonomy: '300 km',
         price: '$3000',
@@ -41,63 +41,43 @@ const FullScreenSlider: FC = () => {
     }
 
     return (
-        <Box sx={{ width: '100%', height: '92vh', overflow: 'hidden', backgroundImage: 'url(/images/Banners_Backgrounds/Slider_Background2.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', transparency: 0.4 }}>
+        <Box
+            sx={{
+                width: '100%',
+                height: '92vh',
+                overflow: 'hidden',
+                backgroundColor: '#95A0B4',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+            }}
+        >
             <Slider {...sliderConfig}>
                 {vehicles.map((vehicle, index) => (
                     <Box
                         key={index}
                         sx={{
                             position: 'relative',
-                            width: '100%', // Asegura que el contenedor ocupe todo el ancho del slider
-                            height: '100vh', // Asegura que el contenedor ocupe toda la altura del slider
+                            width: '100%',
+                            height: '100vh',
                             display: 'flex',
-                            alignItems: 'center', // Centra verticalmente
-                            justifyContent: 'center', // Centra horizontalmente
+                            alignItems: 'center', // Alinea verticalmente
+                            justifyContent: 'space-between', // Espacio entre características e imagen
+                            flexDirection: 'row', // Coloca las características e imagen en fila
+                            padding: '0 50px', // Espaciado horizontal
                         }}
                     >
-                        {/* Contenedor de la imagen del producto */}
-                        <Box
-                            sx={{
-                                marginLeft: 20,
-                                position: 'relative',
-                                width: '70%', // Ajusta el ancho de la imagen
-                                height: '80%', // Ajusta la altura de la imagen
-                                zIndex: 2, // Asegura que esté sobre el fondo
-                            }}
-                        >
-                            <Image
-                                src={vehicle.imageUrl}
-                                alt={vehicle.name}
-                                layout="fill"
-                                objectFit="contain" // Mantiene las proporciones de la imagen
-                                quality={100}
-                            />
-                        </Box>
-                        {/* Capa de transparencia */}
-                        <Box
-                            sx={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                width: '100%',
-                                height: '100%',
-                                backgroundColor: 'rgba(0, 0, 0, 0.4)', // Ajusta la transparencia aquí
-                                zIndex: -1,
-                            }}
-                        />
-
                         {/* Contenedor de características */}
                         <Box
                             sx={{
-                                marginLeft: 45,
                                 position: 'relative',
-                                zIndex: 3, // Asegura que esté sobre el fondo
+                                zIndex: 3,
                                 backgroundColor: 'rgba(0, 0, 0, 0.5)',
                                 padding: 4,
                                 borderRadius: 2,
                                 color: 'white',
                                 maxWidth: '400px',
-                                textAlign: 'center', // Centra el texto dentro del contenedor
+                                textAlign: 'left', // Alinea el texto a la izquierda
+                                marginTop: 28,
                             }}
                         >
                             <Typography variant="h2" sx={{ fontSize: '2rem', fontWeight: 'bold', mb: 2 }}>
@@ -113,6 +93,39 @@ const FullScreenSlider: FC = () => {
                                 <strong>Precio:</strong> {vehicle.price}
                             </Typography>
                         </Box>
+
+                        {/* Contenedor de la imagen del producto */}
+                        <Box
+                            sx={{
+                                position: 'relative',
+                                width: '50%', // Ajusta el ancho de la imagen
+                                height: '80%', // Ajusta la altura de la imagen
+                                zIndex: 2,
+                                marginLeft: 60,
+                                marginTop: -56,
+                            }}
+                        >
+                            <Image
+                                src={vehicle.imageUrl}
+                                alt={vehicle.name}
+                                layout="fill"
+                                objectFit="contain"
+                                quality={100}
+                            />
+                        </Box>
+
+                        {/* Capa de transparencia */}
+                        <Box
+                            sx={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                width: '100%',
+                                height: '100%',
+                                backgroundColor: 'rgba(0, 0, 0, 0.4)', // Ajusta la transparencia aquí
+                                zIndex: -1,
+                            }}
+                        />
                     </Box>
                 ))}
             </Slider>

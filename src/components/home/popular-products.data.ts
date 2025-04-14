@@ -33,7 +33,7 @@ export const data: Array<Course> = [
   },
   {
     id: 6,
-    cover: '/images/courses/Pantalla1.jpg',
+    cover: '/images/courses/monitor1.jpg',
     title: 'Monitores Y Pantallas',
     category: 'Beginner',
   },

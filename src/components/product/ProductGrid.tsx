@@ -4,19 +4,19 @@ import Grid from '@mui/material/Grid'
 import Image from 'next/image'
 
 const products = [
-    { name: 'Bicicletas Electricas', imageUrl: '/images/products/bic1.jpg' },
-    { name: 'Motocicletas Eléctricas', imageUrl: '/images/products/41.jpg' },
-    { name: 'HoverBoards', imageUrl: '/images/products/hover2.jpg' },
-    { name: 'Monitores Y Pantallas', imageUrl: '/images/products/pantalla1.jpg' },
-    { name: 'Minivan Electrico', imageUrl: '/images/products/van1.png' },
-    { name: 'Celdas de Litio', imageUrl: '/images/products/celdas1.jpg' },
+    { name: 'Bicicletas eléctricas', imageUrl: '/images/products/bici1.jpg' },
+    { name: 'Motocicletas eléctricas', imageUrl: '/images/products/moto3.jpg' },
+    { name: 'Hoverboards', imageUrl: '/images/products/hover2.jpg' },
+    { name: 'Monitores y pantallas', imageUrl: '/images/products/monitor1.jpg' },
+    { name: 'Miniván eléctrico', imageUrl: '/images/products/van1.png' },
+    { name: 'Celdas de litio', imageUrl: '/images/products/celdas1.jpg' },
 ]
 
 const ProductGrid: FC = () => {
     return (
         <Grid container spacing={2} sx={{ mt: 4 }}>
             {products.map((product, index) => (
-                <Grid item xs={12} md={4} key={index}>
+                <Grid item xs={6} md={4} key={index}>
                     <Box
                         sx={{
                             height: 300,

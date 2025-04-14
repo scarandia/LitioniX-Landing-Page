@@ -58,6 +58,11 @@ const ProductMain: FC<Props> = ({ products }) => {
                                         overflow: 'hidden',
                                         textAlign: 'center',
                                         backgroundColor: '#f9f9f9',
+                                        transition: 'transform 0.3s, box-shadow 0.3s',
+                                        '&:hover': {
+                                            transform: 'scale(1.05)',
+                                            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)',
+                                        },
                                     }}
                                 >
                                     <Image
@@ -65,7 +70,7 @@ const ProductMain: FC<Props> = ({ products }) => {
                                         alt={product.name}
                                         width={300}
                                         height={200}
-                                        style={{ objectFit: 'cover' }}
+                                        style={{ objectFit: 'cover', borderBottom: '1px solid #ddd' }}
                                     />
                                     <Typography variant="h6" sx={{ padding: '10px 0' }}>
                                         {product.name}

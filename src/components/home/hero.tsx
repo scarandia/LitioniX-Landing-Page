@@ -1,16 +1,15 @@
 import React, { FC } from 'react'
-import Image from 'next/image'
+//import Image from 'next/image'
+//import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { Link as ScrollLink } from 'react-scroll'
 import { StyledButton } from '@/components/styled-button'
-import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 
 const HomeHero: FC = () => {
   return (
-    //Color Seccion Inicio
     <Box
       id="hero"
       sx={{
@@ -21,7 +20,7 @@ const HomeHero: FC = () => {
         position: 'relative',
         pt: 8,
         pb: { xs: 12, md: 16 },
-        color: '#D95D39', //texto "sin limites"
+        color: 'white', //texto "sin limites"
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -63,7 +62,7 @@ const HomeHero: FC = () => {
                     component="mark"
                     sx={{
                       position: 'relative',
-                      color: '#D95D39',
+                      color: 'white',
                       fontSize: 'inherit',
                       fontWeight: 'inherit',
                       backgroundColor: 'unset',
@@ -110,14 +109,14 @@ const HomeHero: FC = () => {
                 </Typography>
               </Box>
               <Box sx={{ '& button': { mr: 2 } }}>
+                {/*<ScrollLink to="video-section" spy={true} smooth={true} offset={0} duration={350}>
+                  <StyledButton color="primary" size="large" variant="contained">
+                    Ver Video
+                  </StyledButton>
+                  </ScrollLink>*/}
                 <ScrollLink to="popular-course" spy={true} smooth={true} offset={0} duration={350}>
                   <StyledButton color="primary" size="large" variant="contained">
                     Conoce Más
-                  </StyledButton>
-                </ScrollLink>
-                <ScrollLink to="video-section" spy={true} smooth={true} offset={0} duration={350}>
-                  <StyledButton color="primary" size="large" variant="outlined">
-                    Ver Video
                   </StyledButton>
                 </ScrollLink>
               </Box>
@@ -129,7 +128,7 @@ const HomeHero: FC = () => {
           </Grid>
         </Grid>
       </Container>
-    </Box>
+    </Box >
   )
 }
 

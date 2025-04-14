@@ -90,18 +90,27 @@ const HomePopularCourse: FC = () => {
     >
       <Container maxWidth="lg">
         {/*<ExperienceSection />*/}
-        <h1 style={{ textAlign: 'center' }}>Nuestro catalogo</h1>
+        <h1 style={{ textAlign: 'center' }}>Nuestro Catálogo</h1>
 
         {/* Tipos de productos */}
         <Box sx={{ mt: 4 }}>
           <ProductGrid />
         </Box>
-        <Box sx={{ mt: 4, backgroundColor: '#fff' }}>
-          {/* FullScreenSlider of products*/}
-          <FullScreenSlider />
-        </Box>
-
       </Container>
+
+      {/* FullScreenSlider outside the Container */}
+      <Box
+        sx={{
+          position: 'relative',
+          width: '100%',
+          height: '100vh', // Full screen height
+          marginTop: 4,
+          marginBottom: -14,
+          backgroundColor: '#fff', // Optional, keeps the white background
+        }}
+      >
+        <FullScreenSlider />
+      </Box>
     </Box>
   )
 }
