@@ -17,7 +17,7 @@ const Navigation: FC = () => {
           duration={350}
           sx={{
             position: 'relative',
-            color: 'text.disabled',
+            color: 'black', // Text color
             cursor: 'pointer',
             fontWeight: 600,
             display: 'inline-flex',
@@ -27,15 +27,21 @@ const Navigation: FC = () => {
             mb: { xs: 3, md: 0 },
             fontSize: { xs: '1.2rem', md: 'inherit' },
             ...(destination === '/' && {
-              color: 'primary.main',
+              color: 'red',
             }),
+
+            // Add a transparent border by default
+            border: '2px solid transparent',
+            boxSizing: 'border-box', // Ensures the border is included in the element's size
 
             '& > div': { display: 'none' },
 
             '&.current>div': { display: 'block' },
 
             '&:hover': {
-              color: 'primary.main',
+              color: '#C11720',
+              border: '2px solid #C11720', // Change the border color on hover
+              borderRadius: '4px', // Optional: Rounds the corners of the square
               '&>div': {
                 display: 'block',
               },
@@ -50,8 +56,6 @@ const Navigation: FC = () => {
               '& img': { width: 44, height: 'auto' },
             }}
           >
-            {/* eslint-disable-next-line */}
-            <img src="/images/headline-curve.svg" alt="Headline curve" />
           </Box>
           {label}
         </Box>

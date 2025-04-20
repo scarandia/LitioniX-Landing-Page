@@ -5,11 +5,11 @@ import Image from 'next/image'
 
 const products = [
     { name: 'Bicicletas eléctricas', imageUrl: '/images/products/bici1.jpg' },
-    { name: 'Motocicletas eléctricas', imageUrl: '/images/products/moto3.jpg' },
-    { name: 'Hoverboards', imageUrl: '/images/products/hover2.jpg' },
-    { name: 'Monitores y pantallas', imageUrl: '/images/products/monitor1.jpg' },
-    { name: 'Miniván eléctrico', imageUrl: '/images/products/van1.png' },
-    { name: 'Celdas de litio', imageUrl: '/images/products/celdas1.jpg' },
+    { name: 'Motocicletas eléctricas', imageUrl: '/images/products/moto6.jpg' },
+    { name: 'Hoverboards', imageUrl: '/images/products/hover8.jpg' },
+    { name: 'Monitores y pantallas', imageUrl: '/images/products/monitor2.jpg' },
+    { name: 'Miniván eléctrico', imageUrl: '/images/products/van2_white_bg.png' },
+    { name: 'Celdas de litio', imageUrl: '/images/products/Litio_batteries.png' },
 ]
 
 const ProductGrid: FC = () => {
@@ -38,7 +38,7 @@ const ProductGrid: FC = () => {
                             alt={product.name}
                             layout="fill"
                             objectFit="cover"
-                            style={{ opacity: 0.5 }}
+                            style={{ opacity: 0.8 }}
                         />
                         <Box
                             sx={{

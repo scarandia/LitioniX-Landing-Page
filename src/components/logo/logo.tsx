@@ -11,13 +11,16 @@ const Logo: FC<Props> = ({ onClick, variant }) => {
   return (
     <Box onClick={onClick}>
       <Link href="/" passHref>
-        <Typography
-          variant="h4"
-          component="h1"
-          sx={{ fontWeight: 900, '& span': { color: variant === 'primary' ? 'primary.main' : 'unset' } }}
-        >
-          Litioni<span>X</span>
-        </Typography>
+        <Box
+          component="img"
+          src="/images/icons/Marca_NoBG.png"
+          alt="Litionix Logo"
+          sx={{
+            width: { xs: 50, md: 50 }, // Responsive width
+            height: 'auto', // Maintain aspect ratio
+            cursor: 'pointer',
+          }}
+        />
       </Link>
     </Box>
   )

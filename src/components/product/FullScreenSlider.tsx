@@ -21,7 +21,7 @@ const vehicles = [
     },
     {
         name: 'Modelo 3',
-        imageUrl: '/images/products/van2.png',
+        imageUrl: '/images/products/van3.png',
         speed: '90 km/h',
         autonomy: '300 km',
         price: '$3000',
@@ -62,10 +62,28 @@ const FullScreenSlider: FC = () => {
                             display: 'flex',
                             alignItems: 'center', // Alinea verticalmente
                             justifyContent: 'space-between', // Espacio entre características e imagen
-                            flexDirection: 'row', // Coloca las características e imagen en fila
-                            padding: '0 50px', // Espaciado horizontal
+                            flexDirection: { xs: 'column-reverse', md: 'row' }, // Cambia el orden en pantallas pequeñas
+                            padding: { xs: '20px', md: '0 50px' }, // Ajusta el espaciado para pantallas pequeñas
                         }}
                     >
+                        {/* Contenedor de la imagen del producto */}
+                        <Box
+                            sx={{
+                                position: 'relative',
+                                width: { xs: '100%', md: '50%' }, // Imagen ocupa todo el ancho en pantallas pequeñas
+                                height: { xs: '60%', md: '80%' }, // Ajusta la altura en pantallas pequeñas
+                                zIndex: 2,
+                            }}
+                        >
+                            <Image
+                                src={vehicle.imageUrl}
+                                alt={vehicle.name}
+                                layout="fill"
+                                objectFit="contain"
+                                quality={100}
+                            />
+                        </Box>
+
                         {/* Contenedor de características */}
                         <Box
                             sx={{
@@ -76,8 +94,10 @@ const FullScreenSlider: FC = () => {
                                 borderRadius: 2,
                                 color: 'white',
                                 maxWidth: '400px',
-                                textAlign: 'left', // Alinea el texto a la izquierda
-                                marginTop: 28,
+                                textAlign: 'left',
+                                width: { xs: '100%', md: 'auto' }, // Ocupa todo el ancho en pantallas pequeñas
+                                marginTop: { xs: 2, md: -50 }, // Espaciado superior en pantallas pequeñas
+                                marginLeft: 130,
                             }}
                         >
                             <Typography variant="h2" sx={{ fontSize: '2rem', fontWeight: 'bold', mb: 2 }}>
@@ -93,39 +113,6 @@ const FullScreenSlider: FC = () => {
                                 <strong>Precio:</strong> {vehicle.price}
                             </Typography>
                         </Box>
-
-                        {/* Contenedor de la imagen del producto */}
-                        <Box
-                            sx={{
-                                position: 'relative',
-                                width: '50%', // Ajusta el ancho de la imagen
-                                height: '80%', // Ajusta la altura de la imagen
-                                zIndex: 2,
-                                marginLeft: 60,
-                                marginTop: -56,
-                            }}
-                        >
-                            <Image
-                                src={vehicle.imageUrl}
-                                alt={vehicle.name}
-                                layout="fill"
-                                objectFit="contain"
-                                quality={100}
-                            />
-                        </Box>
-
-                        {/* Capa de transparencia */}
-                        <Box
-                            sx={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                width: '100%',
-                                height: '100%',
-                                backgroundColor: 'rgba(0, 0, 0, 0.4)', // Ajusta la transparencia aquí
-                                zIndex: -1,
-                            }}
-                        />
                     </Box>
                 ))}
             </Slider>
