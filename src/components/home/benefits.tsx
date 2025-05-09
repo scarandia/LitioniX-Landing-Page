@@ -5,7 +5,6 @@ import Grid from '@mui/material/Grid'
 import { styled } from '@mui/material/styles'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
-import CircularProgress from '@mui/material/CircularProgress'
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress'
 import { data } from './benefits.data'
 
@@ -38,29 +37,31 @@ const BorderLinearProgress = styled(LinearProgress, {
 const HomeFeature: FC = () => {
   return (
     //Color Seccion beneficios
-    <Box id="feature" sx={{ py: { xs: 10, md: 14 }, backgroundColor: '#7B9E89' }}>
-
+    <Box id="feature" sx={{ py: { xs: 10, md: 14 }, backgroundColor: '#05334A' }}>
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={12} md={5}>
-            <Box sx={{ position: 'relative', mt: 13 }}>
-              <Image src="/images/others/Beneficios.png" width={690} height={424} quality={100} alt="Feature img" />
-            </Box>
-
             <Box
               sx={{
-                position: 'absolute',
-                bottom: -12,
-                left: { xs: 0, md: -24 },
-                boxShadow: 2,
-                borderRadius: 1,
-                px: 2.2,
-                py: 2,
-                zIndex: 1,
-                backgroundColor: 'background.paper',
-                textAlign: 'center',
+                position: 'relative',
+                mt: 13,
+                width: '100%', // Ensures responsiveness
+                maxWidth: 690, // Limits the width to 690px
+                height: 420, // Sets the height to 420px
+                mx: 'auto', // Centers the image horizontally
               }}
             >
+              <Image
+                src="/images/products/HD4.png"
+                width={768} // Explicit width
+                height={761} // Explicit height
+                quality={100}
+                alt="Feature img"
+                style={{
+                  borderRadius: '8px', // Optional: Adds rounded corners
+                  objectFit: 'contain', // Ensures the image fits within the container
+                }}
+              />
             </Box>
           </Grid>
           <Grid item xs={12} md={7}>
@@ -76,7 +77,7 @@ const HomeFeature: FC = () => {
                 fontWeight: 'bold',
               }}
             >
-              Conoce los{' '}
+              {' '}
               <Typography
                 component="mark"
                 sx={{
@@ -87,7 +88,7 @@ const HomeFeature: FC = () => {
                   backgroundColor: 'unset',
                 }}
               >
-                Beneficios <br />
+                ¿Por qué Litionix? <br />
                 <Box
                   sx={{
                     position: 'absolute',
@@ -97,11 +98,9 @@ const HomeFeature: FC = () => {
                     '& img': { width: { xs: 140, md: 175 }, height: 'auto' },
                   }}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/images/headline-curve.svg" alt="Headline curve" />
                 </Box>
               </Typography>
-              De nuestros productos
+
             </Typography>
 
             <Typography sx={{ color: 'text.secondary', mb: 2, ml: { xs: 0, md: 4 } }}>

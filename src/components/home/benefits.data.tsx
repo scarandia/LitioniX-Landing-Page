@@ -12,18 +12,18 @@ interface Data {
 
 export const data: Data[] = [
   {
-    title: 'Innovación eléctrica.',
-    description: 'Reduce la huella de carbono con un transporte eficiente y ecológico.',
+    title: 'Energía Inteligente y Limpia.',
+    description: 'Movete con la potencia del litio: cero emisiones, cero gasolina. Cuidás el planeta en cada trayecto.',
     icon: <ArtTrackIcon />,
   },
   {
-    title: 'Precios Competitivos',
-    description: 'Disfruta de una alternativa asequible con menores costos en combustible',
+    title: 'Ahorro en serio',
+    description: 'Menos mantenimiento, cero gasolina y larga duración. Con nuestros vehículos, el ahorro es real.',
     icon: <AttachMoneyIcon />,
   },
   {
     title: 'Batería de larga duración',
-    description: 'Autonomía extendida para viajes más largos sin preocuparte por la carga.',
+    description: 'Olvidate de las paradas constantes: nuestras celdas de litio te llevan más lejos con menos carga.',
     icon: <LocalLibraryIcon />,
   },
   {

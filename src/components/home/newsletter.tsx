@@ -7,11 +7,11 @@ import { StyledButton } from '../styled-button'
 
 const HomeNewsLetter: FC = () => {
   return (
-    <Box sx={{ backgroundColor: 'background.paper', py: { xs: 8, md: 10 } }}>
+    <Box sx={{ backgroundColor: '#EFEAE7', py: { xs: 8, md: 10 } }}>
       <Container>
         <Box
           sx={{
-            backgroundColor: 'secondary.main',
+            backgroundColor: '#144861',
             borderRadius: 10,
             py: { xs: 4, md: 10 },
             px: { xs: 4, md: 8 },
@@ -19,9 +19,9 @@ const HomeNewsLetter: FC = () => {
           }}
         >
           <Typography variant="h1" component="h2" sx={{ mb: 1, fontSize: { xs: 32, md: 42 } }}>
-            ¡Contáctanos!
+            ¡Envíanos un Correo!
           </Typography>
-          <Typography sx={{ mb: 6 }}>Envíanos un mensaje para más información de nuestros productos.</Typography>
+          <Typography sx={{ mb: 6 }}>Si deseas más información sobre nuestros productos, no dudes en escribirnos por correo.</Typography>
 
           <Box
             sx={{
@@ -46,7 +46,12 @@ const HomeNewsLetter: FC = () => {
               placeholder="Haznos saber tus consultas!"
             />
             <Box>
-              <StyledButton disableHoverEffect size="large">
+              <StyledButton
+                disableHoverEffect
+                size="large"
+                component="a"
+                href="mailto:sc.arandia2@gmail.com?subject=Consulta%20sobre%20productos&body=Escribe%20tu%20mensaje%20aquí"
+              >
                 Enviar
               </StyledButton>
             </Box>

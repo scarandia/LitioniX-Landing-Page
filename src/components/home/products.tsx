@@ -9,7 +9,7 @@ import { useTheme, styled } from '@mui/material/styles'
 import IconArrowBack from '@mui/icons-material/ArrowBack'
 import IconArrowForward from '@mui/icons-material/ArrowForward'
 import { MentorCardItem } from '@/components/mentor'
-import { data } from './products.data'
+import { data } from './contacts'
 
 interface SliderArrowArrow {
   onClick?: () => void
@@ -51,7 +51,7 @@ const StyledDots = styled('ul')(({ theme }) => ({
     '& li': {
       marginRight: theme.spacing(2),
       '&.slick-active>div': {
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: 'theme.palette.primary.main',
       },
     },
   },
@@ -88,14 +88,13 @@ const HomeOurMentors: FC = () => {
           xs: 8,
           md: 12,
         },
-        backgroundColor: '#7B9E89',
+        backgroundColor: '#EFEAe7',
       }}
     >
       <Container maxWidth="lg">
         <Typography variant="h1" sx={{ fontSize: 40 }}>
-          Contactos
+          Contáctanos
         </Typography>
-
         <Slider {...sliderConfig}>
           {data.map((item) => (
             <MentorCardItem key={String(item.id)} item={item} />

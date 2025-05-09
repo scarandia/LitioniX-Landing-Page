@@ -1,9 +1,7 @@
 import React, { FC } from 'react'
 import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
 import Slider, { Settings } from 'react-slick'
 import Container from '@mui/material/Container'
-import Typography from '@mui/material/Typography'
 import { useTheme, styled } from '@mui/material/styles'
 import { IconButton, useMediaQuery } from '@mui/material'
 import IconArrowBack from '@mui/icons-material/ArrowBack'
@@ -89,11 +87,9 @@ const HomePopularCourse: FC = () => {
       }}
     >
       <Container maxWidth="lg">
-        {/*<ExperienceSection />*/}
-        <h1 style={{ textAlign: 'center' }}>Nuestro Catálogo</h1>
-
+        <h1 style={{ textAlign: 'center', color: '#EFEAE7', marginTop: '-30px' }}>Nuestro Catálogo</h1>
         {/* Tipos de productos */}
-        <Box sx={{ mt: 4 }}>
+        <Box sx={{ mt: 0 }}>
           <ProductGrid />
         </Box>
       </Container>
@@ -104,7 +100,7 @@ const HomePopularCourse: FC = () => {
           position: 'relative',
           width: '100%',
           height: '100vh', // Full screen height
-          marginTop: 4,
+          marginTop: 6,
           marginBottom: -14,
           backgroundColor: '#fff', // Optional, keeps the white background
         }}

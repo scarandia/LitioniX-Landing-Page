@@ -51,16 +51,16 @@ const SocialLinkItem: FC<SocialLinkItemProps> = ({ item }) => (
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 36,
-        height: 36,
+        width: 48,
+        height: 48,
         borderRadius: '50%',
         color: 'inherit',
         '&:hover': {
-          backgroundColor: 'secondary.main',
+          backgroundColor: '#C11720',
         },
         '& img': {
           fill: 'currentColor',
-          width: 22,
+          width: 36,
           height: 'auto',
         },
       }}

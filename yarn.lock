@@ -297,6 +297,16 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/manrope@^5.2.5":
+  version "5.2.5"
+  resolved "https://registry.npmjs.org/@fontsource/manrope/-/manrope-5.2.5.tgz"
+  integrity sha512-4mYUAhsuF8KoXseG8T9woWUc/foznUVluFtE6fCKAqe76WM3kmDNedaINWjzWB73+wly0duFvVpDBma3NXXT0g==
+
+"@fontsource/montserrat@^5.2.5":
+  version "5.2.5"
+  resolved "https://registry.npmjs.org/@fontsource/montserrat/-/montserrat-5.2.5.tgz"
+  integrity sha512-/OA+bdg1yqUArDUnEeCqDwgTDiIpvED56TxYskje8UKpsvjl/0A9eNod7IcdHz6/Osi70vo7briRO3la8/u+5Q==
+
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.5"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.9.5.tgz"

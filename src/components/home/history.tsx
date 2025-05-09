@@ -10,9 +10,6 @@ import { styled } from '@mui/material/styles'
 import IconArrowBack from '@mui/icons-material/ArrowBack'
 import IconArrowForward from '@mui/icons-material/ArrowForward'
 
-import { TestimonialItem } from '@/components/testimonial'
-import { data } from './testimonial.data'
-
 interface SliderArrowArrow {
   onClick?: () => void
   type: 'next' | 'prev'
@@ -79,45 +76,67 @@ const HomeTestimonial: FC = () => {
                 fontWeight: 'bold',
               }}
             >
-              Testimonios de Nuestros{' '}
               <Typography
-                component="mark"
+                component="span"
                 sx={{
-                  position: 'relative',
-                  color: 'primary.main',
+                  color: '#EFEAE7', // Change this to your desired color
                   fontSize: 'inherit',
                   fontWeight: 'inherit',
-                  backgroundColor: 'unset',
                 }}
               >
-                Clientes{' '}
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    top: { xs: 20, md: 28 },
-                    left: 2,
-                    '& img': { width: { xs: 130, md: 175 }, height: 'auto' },
-                  }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/images/headline-curve.svg" alt="Headline curve" />
-                </Box>
-              </Typography>
+                Nuestra Historia
+              </Typography>{' '}
             </Typography>
-
-            <StyledSlickContainer>
-              <Slider ref={sliderRef} {...sliderConfig}>
-                {data.map((item, index) => (
-                  <TestimonialItem key={String(index)} item={item} />
-                ))}
-              </Slider>
-            </StyledSlickContainer>
           </Grid>
-          <Grid item xs={12} md={6} sx={{ display: { xs: 'none', md: 'block' } }}>
-            <Box sx={{ width: { xs: '100%', md: '90%' } }}>
-              <Image src="/images/people/Testimonio2.png" width={520} height={540} quality={97} alt="Testimonial img" />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 4,
+              backgroundColor: '#144861',
+              borderRadius: 2,
+              p: 4,
+              color: '#EFEAE7',
+            }}
+          >
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>
+                2017 - Fundación
+              </Typography>
+              <Typography variant="body1">
+                Litionix comenzó como un pequeño emprendimiento enfocado en soluciones de movilidad eléctrica.
+              </Typography>
             </Box>
-          </Grid>
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>
+                2018 - Primer Producto
+              </Typography>
+              <Typography variant="body1">
+                Lanzamos nuestra primera bicicleta eléctrica, revolucionando el mercado local.
+              </Typography>
+            </Box>
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>
+                2021 - Expansión Global
+              </Typography>
+              <Typography variant="body1">
+                Nos expandimos a mercados internacionales, llevando nuestras soluciones a más de 10 países.
+              </Typography>
+            </Box>
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>
+                2025 - Innovación Continua
+              </Typography>
+              <Typography variant="body1">
+                Hoy, Litionix es el resultado de años de aprendizaje, desafíos superados y un compromiso firme con la sostenibilidad.
+                Apostamos por el litio no solo porque es el futuro, sino porque está aquí, en casa. Convertimos un recurso boliviano en energía para movernos, trabajar, y vivir mejor.
+                Podés cerrar con una frase tipo:
+                “Este no es solo un cambio de tecnología. Es un cambio de rumbo
+              </Typography>
+            </Box>
+          </Box>
         </Grid>
       </Container>
     </Box>

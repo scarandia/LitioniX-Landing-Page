@@ -4,8 +4,8 @@ import { grey, common } from '@mui/material/colors'
 const palette: PaletteOptions = {
   mode: 'light',
   background: {
-    //Color seccion Productos
-    default: '#fdfdfd', //'#fdfdfd',
+    //Color seccion Productos - primario
+    default: '#05334a', //'#fdfdfd',
     paper: common.white,
   },
   text: {

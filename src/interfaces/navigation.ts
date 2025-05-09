@@ -1,4 +1,6 @@
+import { ReactNode } from "react"
+
 export interface Navigation {
-  label: string
+  label: ReactNode
   path: string
 }

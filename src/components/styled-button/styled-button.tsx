@@ -10,14 +10,22 @@ interface BaseButtonProps extends Pick<ButtonProps, 'onClick' | 'type' | 'startI
   color?: 'default' | 'primary' | 'secondary' | 'dark' | 'light'
   size?: 'small' | 'medium' | 'large'
   disableHoverEffect?: boolean
+  component?: React.ElementType // Permite usar "a" como componente
+  href?: string // Permite usar enlaces
 }
+
 interface StyledButtonRootProps extends BaseButtonProps {
   theme?: Theme
 }
 
 const StyledButtonRoot = styled('button', {
   shouldForwardProp: (prop) =>
-    prop !== 'variant' && prop !== 'color' && prop !== 'size' && prop !== 'disableHoverEffect',
+    prop !== 'variant' &&
+    prop !== 'color' &&
+    prop !== 'size' &&
+    prop !== 'disableHoverEffect' &&
+    prop !== 'component' &&
+    prop !== 'href',
 })<StyledButtonRootProps>(({ theme, color, variant, size, disableHoverEffect }) => ({
   fontFamily,
   cursor: 'pointer',
@@ -87,7 +95,7 @@ const StyledButtonRoot = styled('button', {
     boxShadow: 'none !important',
   }),
 
-  // colors & varians
+  // colors & variants
   ...(color === 'default' &&
     variant === 'contained' && {
     backgroundColor: theme.palette.text.primary,

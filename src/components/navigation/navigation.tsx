@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import Box from '@mui/material/Box'
 import { Link as ScrollLink } from 'react-scroll'
 import { navigations } from './navigation.data'
@@ -26,38 +26,24 @@ const Navigation: FC = () => {
             px: { xs: 0, md: 3 },
             mb: { xs: 3, md: 0 },
             fontSize: { xs: '1.2rem', md: 'inherit' },
-            ...(destination === '/' && {
-              color: 'red',
-            }),
-
-            // Add a transparent border by default
             border: '2px solid transparent',
             boxSizing: 'border-box', // Ensures the border is included in the element's size
-
-            '& > div': { display: 'none' },
-
-            '&.current>div': { display: 'block' },
-
+            '& img': {
+              width: 24, // Default width for images
+              height: 24, // Default height for images
+            },
             '&:hover': {
               color: '#C11720',
               border: '2px solid #C11720', // Change the border color on hover
               borderRadius: '4px', // Optional: Rounds the corners of the square
-              '&>div': {
-                display: 'block',
-              },
             },
           }}
         >
-          <Box
-            sx={{
-              position: 'absolute',
-              top: 12,
-              transform: 'rotate(3deg)',
-              '& img': { width: 44, height: 'auto' },
-            }}
-          >
-          </Box>
-          {label}
+          {typeof label === 'string' && label.endsWith('.svg') ? (
+            <img src={label} alt="Navigation Icon" style={{ width: 30, height: 30 }} />
+          ) : (
+            label
+          )}
         </Box>
       ))}
     </Box>
