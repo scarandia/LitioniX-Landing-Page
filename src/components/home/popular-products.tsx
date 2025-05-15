@@ -12,7 +12,7 @@ import FullScreenSlider from '../product/FullScreenSlider'
 interface SliderArrowArrow {
   onClick?: () => void
   type: 'next' | 'prev'
-  className?: 'string'
+  className?: string // fixed type
 }
 
 const SliderArrow: FC<SliderArrowArrow> = (props) => {
@@ -78,10 +78,7 @@ const HomePopularCourse: FC = () => {
     <Box
       id="popular-course"
       sx={{
-        pt: {
-          xs: 6,
-          md: 8,
-        },
+        pt: { xs: 6, md: 8 },
         pb: 14,
         backgroundColor: 'background.default',
       }}
@@ -99,10 +96,10 @@ const HomePopularCourse: FC = () => {
         sx={{
           position: 'relative',
           width: '100%',
-          height: '100vh', // Full screen height
+          height: '100vh',
           marginTop: 6,
           marginBottom: -14,
-          backgroundColor: '#fff', // Optional, keeps the white background
+          backgroundColor: '#fff',
         }}
       >
         <FullScreenSlider />
