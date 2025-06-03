@@ -76,30 +76,30 @@ const HomePopularCourse: FC = () => {
 
   return (
     <Box
-      id="popular-course"
       sx={{
-        pt: { xs: 6, md: 8 },
-        pb: 14,
-        backgroundColor: 'background.default',
+        pt: { xs: 4, md: 8 }, // Reduced padding on mobile
+        pb: { xs: 8, md: 14 },
+        backgroundColor: '#05334A',
+        backgroundImage: {
+          xs: 'linear-gradient(to bottom, #042A3F 0%, #05334A 100%)', // Simpler gradient on mobile
+          md: `radial-gradient(circle at 75% 30%, rgba(23,85,121,0.7) 0%, transparent 50%),
+           linear-gradient(to bottom, #042A3F 0%, #05334A 100%)`
+        },
       }}
     >
       <Container maxWidth="lg">
-        <h1 style={{ textAlign: 'center', color: '#EFEAE7', marginTop: '-30px' }}>Nuestro Catálogo</h1>
-        {/* Tipos de productos */}
-        <Box sx={{ mt: 0 }}>
-          <ProductGrid />
-        </Box>
+        <ProductGrid />
       </Container>
 
-      {/* FullScreenSlider outside the Container */}
       <Box
         sx={{
           position: 'relative',
           width: '100%',
           height: '100vh',
-          marginTop: 6,
-          marginBottom: -14,
-          backgroundColor: '#fff',
+          marginTop: 8,
+          backgroundColor: '#042A3F',
+          backgroundImage: 'linear-gradient(to top, #021C29 0%, #042A3F 100%)',
+          borderTop: '1px solid rgba(78, 205, 196, 0.15)'
         }}
       >
         <FullScreenSlider />

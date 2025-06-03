@@ -2,146 +2,208 @@ import React, { FC } from 'react'
 import Image from 'next/image'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
-import { styled } from '@mui/material/styles'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
-import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress'
+import { motion } from 'framer-motion'
+import { styled } from '@mui/material/styles'
 import { data } from './benefits.data'
-
-interface LinearProgressProps {
-  order: number
-}
-
-const BorderLinearProgress = styled(LinearProgress, {
-  shouldForwardProp: (prop) => prop !== 'color',
-})<LinearProgressProps>(({ theme, order }) => ({
-  height: 6,
-  borderRadius: 5,
-  [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: theme.palette.grey[200],
-  },
-  [`& .${linearProgressClasses.bar}`]: {
-    borderRadius: 5,
-    ...(order === 1 && {
-      backgroundColor: '#f303ff',
-    }),
-    ...(order === 2 && {
-      backgroundColor: '#26e8bd',
-    }),
-    ...(order === 3 && {
-      backgroundColor: '#0063ff',
-    }),
-  },
-}))
 
 const HomeFeature: FC = () => {
   return (
-    //Color Seccion beneficios
-    <Box id="feature" sx={{ py: { xs: 10, md: 14 }, backgroundColor: '#05334A' }}>
+    <Box
+      id="feature"
+      sx={{
+        py: { xs: 10, md: 14 },
+        background: 'linear-gradient(135deg, #0d2d3e 0%, #1a5276 100%)',
+        position: 'relative',
+        overflow: 'hidden',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundImage: 'radial-gradient(circle at 80% 20%, rgba(26,82,118,0.3) 0%, transparent 30%)',
+        }
+      }}
+    >
       <Container>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={5}>
-            <Box
-              sx={{
-                position: 'relative',
-                mt: 13,
-                width: '100%', // Ensures responsiveness
-                maxWidth: 690, // Limits the width to 690px
-                height: 420, // Sets the height to 420px
-                mx: 'auto', // Centers the image horizontally
-              }}
+        <Grid container spacing={6} alignItems="center">
+          <Grid item xs={12} md={6}>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
             >
-              <Image
-                src="/images/products/HD4.png"
-                width={768} // Explicit width
-                height={761} // Explicit height
-                quality={100}
-                alt="Feature img"
-                style={{
-                  borderRadius: '8px', // Optional: Adds rounded corners
-                  objectFit: 'contain', // Ensures the image fits within the container
-                }}
-              />
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={7}>
-            <Typography
-              component="h2"
-              sx={{
-                position: 'relative',
-                fontSize: { xs: 40, md: 50 },
-                ml: { xs: 0, md: 4 },
-                mt: 2,
-                mb: 3,
-                lineHeight: 1,
-                fontWeight: 'bold',
-              }}
-            >
-              {' '}
-              <Typography
-                component="mark"
+              <Box
                 sx={{
                   position: 'relative',
-                  color: 'white',
-                  fontSize: 'inherit',
-                  fontWeight: 'inherit',
-                  backgroundColor: 'unset',
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
+                  transform: 'perspective(1000px) rotateY(-5deg)',
+                  transition: 'transform 0.5s',
+                  '&:hover': {
+                    transform: 'perspective(1000px) rotateY(0)'
+                  },
+                  border: '1px solid rgba(78, 205, 196, 0.3)'
                 }}
               >
-                ¿Por qué Litionix? <br />
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    top: { xs: 20, md: 28 },
-                    transform: 'rotate(3deg)',
-                    left: 2,
-                    '& img': { width: { xs: 140, md: 175 }, height: 'auto' },
+                <Image
+                  src="/images/products/HD4.png"
+                  width={768}
+                  height={761}
+                  quality={100}
+                  alt="Beneficios de movilidad eléctrica"
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    objectFit: 'cover',
                   }}
-                >
+                />
+                <Box sx={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  background: 'linear-gradient(transparent, rgba(0,0,0,0.7))',
+                  p: 3,
+                  color: 'white'
+                }}>
+                  <Typography variant="h6" sx={{ fontWeight: 700, color: '#4ecdc4' }}>
+                    Movilidad Sostenible
+                  </Typography>
+                  <Typography variant="body2">
+                    Soluciones eléctricas que transforman el transporte boliviano
+                  </Typography>
                 </Box>
+              </Box>
+            </motion.div>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <Typography
+                variant="h2"
+                sx={{
+                  fontSize: { xs: 36, md: 46 },
+                  fontWeight: 800,
+                  lineHeight: 1.2,
+                  mb: 3,
+                  color: 'white',
+                  position: 'relative',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: -10,
+                    left: 0,
+                    width: 80,
+                    height: 4,
+                    backgroundColor: '#4ecdc4',
+                    borderRadius: 2
+                  }
+                }}
+              >
+                ¿Por qué Litionix?
               </Typography>
 
-            </Typography>
+              <Typography sx={{
+                color: '#EFEAE7',
+                mb: 4,
+                fontSize: 18,
+                lineHeight: 1.7
+              }}>
+                Los vehículos eléctricos ofrecen múltiples beneficios tanto para el medio ambiente como para sus usuarios.
+                Al no emitir gases contaminantes, ayudan a reducir la huella de carbono y mejorar la calidad del aire en las ciudades.
+              </Typography>
 
-            <Typography sx={{ color: 'text.secondary', mb: 2, ml: { xs: 0, md: 4 } }}>
-              Los vehículos eléctricos ofrecen múltiples beneficios tanto para el medio ambiente como para sus usuarios.
-              Al no emitir gases contaminantes, ayudan a reducir la huella de carbono y mejorar la calidad del aire en las ciudades.
-            </Typography>
-
-            <Grid container spacing={2} sx={{ ml: { xs: 0, md: 2 } }}>
-              {data.map(({ title, description, icon }, index) => (
-                <Grid key={String(index)} item xs={12} md={6}>
-                  <Box sx={{ px: 2, py: 1.5, boxShadow: 1, borderRadius: 4, display: 'flex', alignItems: 'center' }}>
-                    <Box
-                      sx={{
-                        mr: 1,
-                        backgroundColor: 'primary.main',
-                        borderRadius: '50%',
-                        height: 36,
-                        width: 36,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'primary.contrastText',
-                        '& svg': {
-                          fontSize: 20,
-                        },
-                      }}
+              <Grid container spacing={3}>
+                {data.map(({ title, description, icon }, index) => (
+                  <Grid key={index} item xs={12} md={6}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
                     >
-                      {icon}
-                    </Box>
-                    <Box sx={{ display: 'flex', flex: 1, flexDirection: 'column' }}>
-                      <Typography variant="h6" sx={{ fontSize: '1rem', mb: 1, color: 'secondary.main' }}>
-                        {title}
-                      </Typography>
-                      <Typography sx={{ lineHeight: 1.3, color: 'text.secondary' }} variant="subtitle1">
-                        {description}
-                      </Typography>
-                    </Box>
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
+                      <Box sx={{
+                        backgroundColor: 'rgba(255,255,255,0.05)',
+                        borderRadius: 3,
+                        p: 3,
+                        height: '100%',
+                        border: '1px solid rgba(78, 205, 196, 0.1)',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          backgroundColor: 'rgba(78, 205, 196, 0.1)',
+                          transform: 'translateY(-5px)',
+                          borderColor: 'rgba(78, 205, 196, 0.3)'
+                        }
+                      }}>
+                        <Box sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          mb: 2
+                        }}>
+                          <Box sx={{
+                            mr: 2,
+                            backgroundColor: 'rgba(78, 205, 196, 0.2)',
+                            borderRadius: '50%',
+                            height: 50,
+                            width: 50,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: '#4ecdc4',
+                            fontSize: 24
+                          }}>
+                            {icon}
+                          </Box>
+                          <Typography variant="h6" sx={{
+                            color: 'white',
+                            fontWeight: 700,
+                            fontSize: '1.1rem'
+                          }}>
+                            {title}
+                          </Typography>
+                        </Box>
+                        <Typography sx={{
+                          color: '#EFEAE7',
+                          lineHeight: 1.6,
+                          fontSize: '0.95rem'
+                        }}>
+                          {description}
+                        </Typography>
+                      </Box>
+                    </motion.div>
+                  </Grid>
+                ))}
+              </Grid>
+
+              <Box sx={{
+                backgroundColor: 'rgba(78, 205, 196, 0.15)',
+                borderRadius: 3,
+                p: 3,
+                mt: 4,
+                borderLeft: '4px solid #4ecdc4'
+              }}>
+                <Typography sx={{
+                  color: '#EFEAE7',
+                  fontStyle: 'italic',
+                  fontSize: 18,
+                  lineHeight: 1.7
+                }}>
+                  "Al elegir Litionix, no solo adquieres un vehículo, sino que te unes a un movimiento
+                  que transforma el transporte boliviano con tecnología sostenible."
+                </Typography>
+              </Box>
+            </motion.div>
           </Grid>
         </Grid>
       </Container>

@@ -63,7 +63,7 @@ const FullScreenSlider: FC = () => {
                 display: { xs: 'none', md: 'flex' },
                 position: 'absolute',
                 top: '50%',
-                left: 24,
+                left: 90,
                 transform: 'translateY(-50%)',
                 zIndex: 11,
                 pointerEvents: 'none',
@@ -76,7 +76,7 @@ const FullScreenSlider: FC = () => {
                 display: { xs: 'none', md: 'flex' },
                 position: 'absolute',
                 top: '50%',
-                right: 24,
+                right: 90,
                 transform: 'translateY(-50%)',
                 zIndex: 11,
                 pointerEvents: 'none',
@@ -107,7 +107,7 @@ const FullScreenSlider: FC = () => {
             {/* Background Image */}
             <Box sx={{
                 position: 'absolute',
-                top: '50%',
+                top: '40%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
                 zIndex: 0,
@@ -146,7 +146,7 @@ const FullScreenSlider: FC = () => {
                             sx={{
                                 position: 'relative',
                                 width: { xs: '80%', md: '50%' },
-                                height: { xs: '60%', md: '75%' },
+                                height: { xs: '45%', md: '75%' },
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -157,8 +157,8 @@ const FullScreenSlider: FC = () => {
                                 src={vehicle.imageUrl}
                                 alt={vehicle.name}
                                 layout="intrinsic"
-                                width={600}
-                                height={600}
+                                width={500}
+                                height={500}
                                 objectFit="contain"
                                 quality={100}
                             />

@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography'
 const ProductDetails = ({ vehicle }: { vehicle: any }) => (
     <Box
         sx={{
-            mt: 0,
+            mt: { xs: -3, md: -1 },
             width: '100%',
             display: 'flex',
             flexDirection: { xs: 'column-reverse', md: 'row' },

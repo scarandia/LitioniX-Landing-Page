@@ -27,7 +27,7 @@ const Navigation: FC = () => {
                   justifyContent: 'center',
                   px: { xs: 0, md: 3 },
                   mb: { xs: 3, md: 0 },
-                  fontSize: { xs: '1.2rem', md: 'inherit' },
+                  fontSize: { xs: '1.2rem', md: '1.1rem' },
                   border: '2px solid transparent',
                   boxSizing: 'border-box',
                   '& img': {
@@ -51,7 +51,6 @@ const Navigation: FC = () => {
             </NextLink>
           )
         }
-
         if (isAnchor) {
           return (
             <Box
