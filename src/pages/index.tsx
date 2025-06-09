@@ -9,7 +9,7 @@ const DynamicHomeFeature = dynamic(() => import('../components/home/benefits'))
 const DynamicHomePopularCourse = dynamic(() => import('../components/home/popular-products'))
 const DynamicHomeTestimonial = dynamic(() => import('../components/home/history'))
 const DynamicHomeOurMentors = dynamic(() => import('../components/home/products'))
-const DynamicHomeNewsLetter = dynamic(() => import('../components/home/newsletter'))
+const DynamicHomeNewsLetter = dynamic(() => import('../components/home/LocationSection'))
 
 const Home: NextPageWithLayout = () => {
   return (

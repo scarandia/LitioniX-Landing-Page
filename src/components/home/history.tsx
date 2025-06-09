@@ -241,7 +241,7 @@ const HistorySection: FC = () => {
                   boxShadow: 3,
                   border: '2px solid #fbd38d'
                 }}>
-                  <Typography center variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
                     Hecho en Bolivia
                   </Typography>
                   <Typography variant="body2">

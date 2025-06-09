@@ -16,7 +16,7 @@ const Navigation: FC = () => {
           return (
             <NextLink href={destination} passHref key={destination}>
               <Box
-                component="a"
+                component="span" // Changed from "a" to "span"
                 sx={{
                   position: 'relative',
                   color: 'black',
@@ -53,44 +53,51 @@ const Navigation: FC = () => {
         }
         if (isAnchor) {
           return (
-            <Box
-              component={ScrollLink}
+            <ScrollLink
               key={destination}
               activeClass="current"
               to={destination.replace('#', '')}
               spy={true}
               smooth={true}
               duration={350}
-              sx={{
-                position: 'relative',
-                color: 'black',
-                cursor: 'pointer',
-                fontWeight: 600,
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                px: { xs: 0, md: 3 },
-                mb: { xs: 3, md: 0 },
-                fontSize: { xs: '1.2rem', md: 'inherit' },
-                border: '2px solid transparent',
-                boxSizing: 'border-box',
-                '& img': {
-                  width: 24,
-                  height: 24,
-                },
-                '&:hover': {
-                  color: '#C11720',
-                  border: '2px solid #C11720',
-                  borderRadius: '4px',
-                },
+              style={{
+                textDecoration: 'none',
+                display: 'inline-block'
               }}
             >
-              {isSvg ? (
-                <img src={label} alt="Navigation Icon" style={{ width: 30, height: 30 }} />
-              ) : (
-                label
-              )}
-            </Box>
+              <Box
+                component="span" // Changed from "a" to "span"
+                sx={{
+                  position: 'relative',
+                  color: 'black',
+                  cursor: 'pointer',
+                  fontWeight: 600,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  px: { xs: 0, md: 3 },
+                  mb: { xs: 3, md: 0 },
+                  fontSize: { xs: '1.2rem', md: 'inherit' },
+                  border: '2px solid transparent',
+                  boxSizing: 'border-box',
+                  '& img': {
+                    width: 24,
+                    height: 24,
+                  },
+                  '&:hover': {
+                    color: '#C11720',
+                    border: '2px solid #C11720',
+                    borderRadius: '4px',
+                  },
+                }}
+              >
+                {isSvg
+                  ? label === '/icons/location.svg'
+                    ? 'Ubicación'
+                    : <img src={label} alt="Navigation Icon" style={{ width: 30, height: 30 }} />
+                  : label}
+              </Box>
+            </ScrollLink>
           )
         }
 

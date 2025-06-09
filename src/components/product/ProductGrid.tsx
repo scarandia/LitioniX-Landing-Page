@@ -5,247 +5,353 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import Slider from 'react-slick';
-import { useTheme, useMediaQuery } from '@mui/material';
+import { useTheme, useMediaQuery, Container } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { styled } from '@mui/material/styles';
 
 const products = [
     {
-        name: 'Bicicletas eléctricas',
+        name: 'Bicicletas Eléctricas',
         imageUrl: '/images/products/bici1.jpg',
-        category: 'Bicicletas eléctricas',
-        accentColor: '#4ECDC4'
+        category: 'bicicletas-electricas',
+        accentColor: '#4ECDC4',
+        description: 'Movilidad urbana sostenible y eficiente'
     },
     {
-        name: 'Motocicletas eléctricas',
+        name: 'Motocicletas Eléctricas',
         imageUrl: '/images/products/moto6.jpg',
-        category: 'Motocicletas eléctricas',
-        accentColor: '#FFD166'
+        category: 'motocicletas-electricas',
+        accentColor: '#FFD166',
+        description: 'Potencia y autonomía para tus trayectos'
     },
     {
         name: 'Hoverboards',
         imageUrl: '/images/products/hover8.jpg',
-        category: 'Hoverboards',
-        accentColor: '#F25F5C'
+        category: 'hoverboards',
+        accentColor: '#F25F5C',
+        description: 'Diversión y movilidad en un solo dispositivo'
     },
     {
-        name: 'Miniván eléctrico',
+        name: 'Miniván Eléctrico',
         imageUrl: '/images/products/van2_white_bg.png',
-        category: 'Minivan eléctrico',
-        accentColor: '#7E6B8F'
+        category: 'minivan-electrico',
+        accentColor: '#7E6B8F',
+        description: 'Transporte familiar cero emisiones'
     },
     {
-        name: 'Celdas de litio',
+        name: 'Baterías de Litio',
         imageUrl: '/images/products/Litio_batteries.png',
-        category: 'Celdas de Litio',
-        accentColor: '#A5D8FF'
+        category: 'baterias-litio',
+        accentColor: '#A5D8FF',
+        description: 'Energía limpia para tus dispositivos'
     },
 ];
+
+const StyledCard = styled(Box)(({ theme }) => ({
+    position: 'relative',
+    borderRadius: '16px',
+    overflow: 'hidden',
+    height: '100%',
+    boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    '&:hover': {
+        transform: 'translateY(-8px)',
+        boxShadow: '0 12px 40px rgba(0,0,0,0.2)',
+        '& .product-image': {
+            transform: 'scale(1.05)'
+        },
+        '& .product-overlay': {
+            opacity: 1,
+            backgroundColor: 'rgba(0,0,0,0.7)'
+        },
+        '& .product-cta': {
+            transform: 'translateY(0)',
+            opacity: 1
+        }
+    }
+}));
 
 const ProductGrid = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+    const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
-    // Mobile slider settings
-    const sliderSettings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        centerMode: true,
-        centerPadding: '24px',
-        nextArrow: <SliderArrow direction="next" />,
-        prevArrow: <SliderArrow direction="prev" />,
-        appendDots: (dots: React.ReactNode) => (
-            <Box sx={{ position: 'relative', bottom: 24 }}>
-                <ul style={{ margin: 0, padding: 0 }}>{dots}</ul>
-            </Box>
-        ),
-        customPaging: () => (
-            <Box sx={{
-                width: 10,
-                height: 10,
-                backgroundColor: 'rgba(255,255,255,0.3)',
-                borderRadius: '50%'
-            }} />
-        )
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
     };
 
-    function SliderArrow({ direction, onClick }: { direction: 'prev' | 'next'; onClick?: () => void }) {
-        return (
-            <IconButton
-                onClick={onClick}
-                sx={{
-                    position: 'absolute',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    zIndex: 1,
-                    color: '#EFEAE7',
-                    backgroundColor: 'rgba(5,51,74,0.7)',
-                    '&:hover': {
-                        backgroundColor: 'rgba(78, 205, 196, 0.7)'
-                    },
-                    [direction === 'prev' ? 'left' : 'right']: 8,
-                }}
-            >
-                {direction === 'prev' ? <ArrowBackIosNewIcon /> : <ArrowForwardIosIcon />}
-            </IconButton>
-        );
-    }
+    const itemVariants = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                type: 'spring',
+                stiffness: 100,
+                damping: 10
+            }
+        }
+    };
 
     const renderProductCard = (product: typeof products[0]) => (
-        <Link href={`/products?category=${encodeURIComponent(product.category)}`} passHref>
-            <motion.div
-                whileHover={{ y: isMobile ? 0 : -8 }}
-                style={{
-                    width: '100%',
-                    maxWidth: 380,
-                    height: 300,
-                    padding: isMobile ? '0 8px' : 0
-                }}
-            >
-                <Box
-                    sx={{
-                        width: '100%',
-                        height: '100%',
-                        position: 'relative',
-                        borderRadius: 2,
-                        overflow: 'hidden',
-                        boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
-                        cursor: 'pointer',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        '&:hover': {
-                            boxShadow: `0 8px 32px ${product.accentColor}33`,
-                            '& .product-title': {
-                                backgroundColor: `${product.accentColor}CC`
-                            }
-                        }
-                    }}
-                >
-                    <Box sx={{
-                        position: 'relative',
-                        height: '70%',
-                        backgroundColor: product.category === 'Celdas de Litio' ? '#FFF' : '#000'
-                    }}>
+        <motion.div variants={itemVariants} style={{ height: '100%' }}>
+            <Link href={`/productos/${product.category}`} passHref>
+                <StyledCard>
+                    {/* Product Image */}
+                    <Box
+                        className="product-image"
+                        sx={{
+                            position: 'relative',
+                            height: isMobile ? '200px' : '280px',
+                            backgroundColor: '#000',
+                            transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
+                        }}
+                    >
                         <Image
                             src={product.imageUrl}
                             alt={product.name}
                             layout="fill"
-                            objectFit={product.category === 'Celdas de Litio' ? 'contain' : 'cover'}
-                            style={{
-                                padding: product.category === 'Celdas de Litio' ? '20px' : '0'
+                            objectFit="cover"
+                            quality={90}
+                            priority
+                        />
+
+                        {/* Gradient Overlay */}
+                        <Box
+                            sx={{
+                                position: 'absolute',
+                                bottom: 0,
+                                left: 0,
+                                right: 0,
+                                height: '60%',
+                                background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)'
                             }}
                         />
                     </Box>
 
+                    {/* Product Info */}
                     <Box
-                        className="product-title"
                         sx={{
-                            height: '30%',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundColor: 'rgba(255,255,255,0.1)',
-                            backdropFilter: 'blur(4px)',
-                            transition: 'all 0.3s ease',
-                            p: 2
+                            position: 'absolute',
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            p: 3,
+                            zIndex: 2,
+                            color: '#fff'
                         }}
                     >
                         <Typography
-                            variant="h6"
+                            variant="h5"
                             sx={{
-                                color: '#EFEAE7',
-                                fontWeight: 600,
-                                textAlign: 'center',
-                                fontSize: '1.1rem'
+                                fontWeight: 700,
+                                mb: 1,
+                                fontSize: isMobile ? '1.2rem' : '1.4rem',
+                                textShadow: '0 2px 4px rgba(0,0,0,0.5)'
                             }}
                         >
                             {product.name}
                         </Typography>
+                        <Typography
+                            variant="body2"
+                            sx={{
+                                mb: 2,
+                                opacity: 0.9,
+                                fontSize: isMobile ? '0.9rem' : '1rem',
+                                textShadow: '0 1px 2px rgba(0,0,0,0.5)'
+                            }}
+                        >
+                            {product.description}
+                        </Typography>
+
+                        {/* CTA Button */}
+                        <Box
+                            className="product-cta"
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                color: product.accentColor,
+                                transform: 'translateY(10px)',
+                                opacity: 0,
+                                transition: 'all 0.3s ease 0.1s',
+                                fontWeight: 600
+                            }}
+                        >
+                            Ver detalles
+                            <ArrowForwardIcon sx={{ ml: 1, fontSize: '1rem' }} />
+                        </Box>
                     </Box>
-                </Box>
-            </motion.div>
-        </Link>
+
+                    {/* Hover Overlay */}
+                    <Box
+                        className="product-overlay"
+                        sx={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            backgroundColor: 'rgba(0,0,0,0.5)',
+                            opacity: 0,
+                            transition: 'all 0.3s ease',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            zIndex: 1
+                        }}
+                    >
+                        <Box
+                            sx={{
+                                width: 60,
+                                height: 60,
+                                borderRadius: '50%',
+                                backgroundColor: product.accentColor,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                boxShadow: `0 0 0 8px ${product.accentColor}33`
+                            }}
+                        >
+                            <ArrowForwardIcon sx={{ color: '#fff', fontSize: '1.5rem' }} />
+                        </Box>
+                    </Box>
+                </StyledCard>
+            </Link>
+        </motion.div>
     );
 
     return (
         <Box
             sx={{
-                py: 8,
-                px: { xs: 0, sm: 2, md: 4 },
-                backgroundColor: '#05334A',
-                background: 'linear-gradient(135deg, #042A3F 0%, #021C29 100%)',
-                border: '1px solid rgba(255,255,255,0.05)',
+                py: { xs: 6, md: 10 },
+                px: { xs: 2, sm: 4, md: 6 },
+                backgroundColor: '#0A192F',
                 position: 'relative',
                 overflow: 'hidden',
                 '&::before': {
                     content: '""',
                     position: 'absolute',
-                    top: -100,
-                    right: -100,
-                    width: 300,
-                    height: 300,
-                    borderRadius: '50%',
-                    backgroundColor: 'rgba(78, 205, 196, 0.05)',
-                    zIndex: 0
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: '40%',
+                    background: 'linear-gradient(to bottom, rgba(10,25,47,0.9) 0%, transparent 100%)',
+                    zIndex: 1
                 }
             }}
         >
-            <Typography
-                variant="h3"
+            {/* Decorative Elements */}
+            <Box
                 sx={{
-                    textAlign: 'center',
-                    mb: 6,
-                    fontWeight: 700,
-                    color: '#EFEAE7',
-                    fontSize: { xs: '1.8rem', md: '2.2rem' },
-                    position: 'relative',
-                    zIndex: 1,
-                    px: 2
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                    width: '40%',
+                    height: '100%',
+                    background: 'radial-gradient(circle at center, rgba(78,205,196,0.1) 0%, transparent 70%)',
+                    zIndex: 0
                 }}
-            >
-                Nuestros Productos
-            </Typography>
+            />
 
-            {isMobile ? (
-                <Box sx={{ px: 2, position: 'relative', zIndex: 1 }}>
-                    <Slider {...sliderSettings}>
-                        {products.map((product) => (
-                            <Box key={product.name}>
-                                {renderProductCard(product)}
-                            </Box>
-                        ))}
-                    </Slider>
+            <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
+                {/* Section Header */}
+                <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
+                    <Typography
+                        variant="overline"
+                        sx={{
+                            color: '#4ECDC4',
+                            fontWeight: 600,
+                            letterSpacing: '2px',
+                            display: 'block',
+                            mb: 1
+                        }}
+                    >
+                        EXPLORA NUESTRA GAMA
+                    </Typography>
+                    <Typography
+                        variant="h3"
+                        sx={{
+                            color: '#fff',
+                            fontWeight: 700,
+                            fontSize: { xs: '2rem', md: '2.5rem' },
+                            mb: 2
+                        }}
+                    >
+                        Productos de Movilidad Sostenible
+                    </Typography>
+                    <Typography
+                        variant="body1"
+                        sx={{
+                            color: 'rgba(255,255,255,0.7)',
+                            maxWidth: '700px',
+                            mx: 'auto',
+                            fontSize: { xs: '1rem', md: '1.1rem' }
+                        }}
+                    >
+                        Descubre nuestra selección de vehículos eléctricos y soluciones de energía diseñados para un futuro más limpio.
+                    </Typography>
                 </Box>
-            ) : (
-                <Grid
-                    container
-                    spacing={4}
-                    justifyContent="center"
-                    sx={{ position: 'relative', zIndex: 1 }}
+
+                {/* Product Grid */}
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: '-100px' }}
+                    variants={containerVariants}
                 >
-                    {products.map((product, index) => (
-                        <Grid
-                            item
-                            xs={12}
-                            sm={6}
-                            md={index < 3 ? 4 : 6}
-                            key={product.name}
+                    <Grid container spacing={3}>
+                        {products.map((product) => (
+                            <Grid
+                                item
+                                xs={12}
+                                sm={6}
+                                md={4}
+                                key={product.name}
+                                sx={{
+                                    display: 'flex',
+                                    '&:last-child': {
+                                        [theme.breakpoints.up('md')]: {
+                                            gridColumn: 'span 2'
+                                        }
+                                    }
+                                }}
+                            >
+                                {renderProductCard(product)}
+                            </Grid>
+                        ))}
+                    </Grid>
+                </motion.div>
+
+                {/* View All Button */}
+                <Box sx={{ textAlign: 'center', mt: 6 }}>
+                    <Link href="/productos" passHref>
+                        <IconButton
                             sx={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                '&:nth-of-type(4)': { justifyContent: { md: 'flex-end', lg: 'center' } },
-                                '&:nth-of-type(5)': { justifyContent: { md: 'flex-start', lg: 'center' } }
+                                color: '#fff',
+                                backgroundColor: 'rgba(78,205,196,0.2)',
+                                borderRadius: '50px',
+                                px: 4,
+                                py: 1.5,
+                                '&:hover': {
+                                    backgroundColor: '#4ECDC4'
+                                },
+                                transition: 'all 0.3s ease'
                             }}
                         >
-                            {renderProductCard(product)}
-                        </Grid>
-                    ))}
-                </Grid>
-            )}
+                            Ver todos los productos
+                            <ArrowForwardIcon sx={{ ml: 1 }} />
+                        </IconButton>
+                    </Link>
+                </Box>
+            </Container>
         </Box>
     );
 };
