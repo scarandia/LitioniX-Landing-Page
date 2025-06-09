@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import Link from 'next/link'
 
 interface Props {
@@ -7,27 +7,23 @@ interface Props {
   variant?: 'primary' | 'secondary'
 }
 
-const Logo: FC<Props> = ({ onClick, variant }) => {
+const Logo: FC<Props> = ({ onClick, variant = 'primary' }) => {
   return (
     <Box onClick={onClick}>
       <Link href="/" passHref>
-        <Box
-          component="img"
+        <img
           src="/images/icons/Logo_noBG_cropped.png"
           alt="Litionix Logo"
-          sx={{
-            width: { xs: 150, md: 200 }, // Responsive width
-            height: 'auto', // Maintain aspect ratio
+          style={{
+            width: '150px',
+            maxWidth: '200px',
+            height: 'auto',
             cursor: 'pointer',
           }}
         />
       </Link>
     </Box>
   )
-}
-
-Logo.defaultProps = {
-  variant: 'primary',
 }
 
 export default Logo

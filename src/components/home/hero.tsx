@@ -1,3 +1,4 @@
+'use client';
 import React, { FC } from 'react'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
@@ -5,6 +6,7 @@ import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { Link as ScrollLink } from 'react-scroll'
 import { StyledButton } from '@/components/styled-button'
+import Image from 'next/image'  // <--- Import next/image
 
 const HomeHero: FC = () => {
   return (
@@ -76,9 +78,9 @@ const HomeHero: FC = () => {
                         '& img': { width: { xs: 146, md: 210 }, height: 'auto' },
                       }}
                     >
+                      {/* You can add an inline image here if you want */}
                     </Box>
-                  </Typography>
-                  {' '}
+                  </Typography>{' '}
                   <Typography
                     component="span"
                     sx={{
@@ -111,17 +113,13 @@ const HomeHero: FC = () => {
                   <StyledButton color="primary" size="large" variant="contained">
                     Ver Video
                   </StyledButton>
-                  </ScrollLink>*/}
+                </ScrollLink>*/}
                 <ScrollLink to="popular-course" spy={true} smooth={true} offset={0} duration={350}>
                   <StyledButton color="primary" size="large" variant="contained">
                     Conoce Más
                   </StyledButton>
                 </ScrollLink>
               </Box>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={5} sx={{ position: 'relative' }}>
-            <Box sx={{ lineHeight: 0 }}>
             </Box>
           </Grid>
         </Grid>

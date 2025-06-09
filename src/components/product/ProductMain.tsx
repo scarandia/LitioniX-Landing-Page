@@ -1,11 +1,13 @@
+// components/ProductMain.tsx
 import React, { FC, useMemo } from 'react';
-import router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { Box, Grid, Typography, List, ListItem, ListItemButton, ListItemText, Chip, Skeleton, useTheme } from '@mui/material';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Header } from '@/components/header';
 
 interface Product {
-    id: string;
+    _id: string;
     name: string;
     imageUrl: string;
     category: string;
@@ -21,9 +23,12 @@ interface Props {
 
 const ProductCard: FC<{ product: Product }> = ({ product }) => {
     const theme = useTheme();
+    const router = useRouter();
+    console.log('Product ID:', product._id); // Add this
+
 
     const handleProductClick = () => {
-        router.push(`/products/${product.id}`); // Assuming you'll create a dynamic route
+        router.push(`/products/${product._id}`);
     };
 
     return (
@@ -39,7 +44,7 @@ const ProductCard: FC<{ product: Product }> = ({ product }) => {
                 overflow: 'hidden',
                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 backgroundColor: theme.palette.background.paper,
-                cursor: 'pointer', // Add pointer cursor to indicate clickable
+                cursor: 'pointer',
                 '&:hover': {
                     transform: 'translateY(-8px)',
                     boxShadow: theme.shadows[6],
@@ -59,8 +64,7 @@ const ProductCard: FC<{ product: Product }> = ({ product }) => {
                 <Image
                     src={product.imageUrl}
                     alt={product.name}
-                    width={400}
-                    height={300}
+                    fill
                     className="product-image"
                     style={{
                         objectFit: 'cover',
@@ -73,13 +77,33 @@ const ProductCard: FC<{ product: Product }> = ({ product }) => {
                 <Typography variant="h6" fontWeight={600} gutterBottom>
                     {product.name}
                 </Typography>
-                {product.price && (
-                    <Chip
-                        label={`$${product.price.toFixed(2)}`}
-                        color="primary"
-                        sx={{ fontWeight: 700, fontSize: '1rem' }}
-                    />
-                )}
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 1 }}>
+                    {product.price && (
+                        <Chip
+                            label={`$${product.price.toFixed(2)}`}
+                            color="primary"
+                            sx={{
+                                fontWeight: 700,
+                                fontSize: '1rem',
+                                backgroundColor: theme.palette.primary.main,
+                                color: theme.palette.primary.contrastText
+                            }}
+                        />
+                    )}
+                    <Link href={`/products?category=${encodeURIComponent(product.category)}`} passHref legacyBehavior>
+                        <a style={{
+                            marginLeft: '0.5rem',
+                            fontWeight: 500,
+                            color: theme.palette.secondary.main,
+                            textDecoration: 'none',
+                        }}
+                            onMouseOver={e => (e.currentTarget.style.textDecoration = 'underline')}
+                            onMouseOut={e => (e.currentTarget.style.textDecoration = 'none')}
+                        >
+                            {product.category}
+                        </a>
+                    </Link>
+                </Box>
             </Box>
         </Box>
     );
@@ -91,10 +115,12 @@ const ProductMain: FC<Props> = ({ products, loading = false }) => {
     const theme = useTheme();
 
     const { categories, selectedCategory, filteredProducts } = useMemo(() => {
-        const uniqueCategories = Array.from(new Set(products.map(p => p.category)));
-        const currentCategory = typeof category === 'string' ? category : uniqueCategories[0] || '';
+        // Remove "Monitores y pantallas" category
+        const filteredCategories = Array.from(new Set(products.map(p => p.category)))
+            .filter(cat => cat !== 'Monitores y pantallas');
+        const currentCategory = typeof category === 'string' && filteredCategories.includes(category) ? category : filteredCategories[0] || '';
         return {
-            categories: uniqueCategories,
+            categories: filteredCategories,
             selectedCategory: currentCategory,
             filteredProducts: products.filter(p => p.category === currentCategory)
         };
@@ -111,30 +137,51 @@ const ProductMain: FC<Props> = ({ products, loading = false }) => {
     return (
         <>
             <Header />
-
             <Box sx={{
                 maxWidth: 'xl',
                 mx: 'auto',
                 p: { xs: 2, md: 4 },
-                minHeight: '80vh'
+                minHeight: '80vh',
+                background: theme.palette.mode === 'dark' ?
+                    'linear-gradient(to bottom, #121212, #1E1E1E)' :
+                    'linear-gradient(to bottom, #F5F5F5, #FFFFFF)'
             }}>
                 <Grid container spacing={3}>
-                    {/* Categories Sidebar */}
                     <Grid item xs={12} md={3}>
                         <Box sx={{
                             position: 'sticky',
                             top: 80,
                             borderRadius: '16px',
                             background: theme.palette.mode === 'dark'
-                                ? 'linear-gradient(145deg, #1E1E1E, #2A2A2A)'
-                                : 'linear-gradient(145deg, #FFFFFF, #F5F5F5)',
+                                ? 'linear-gradient(145deg, #252525, #303030)'
+                                : 'linear-gradient(145deg, #F8F8F8, #EEEEEE)',
                             boxShadow: theme.shadows[1],
                             p: 2,
                             border: `1px solid ${theme.palette.divider}`
                         }}>
-                            <Typography variant="h6" fontWeight={700} mb={2} color="text.primary">
-                                Categories
-                            </Typography>
+                            <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
+                                <Typography
+                                    variant="h6"
+                                    fontWeight={700}
+                                    color="text.primary"
+                                    sx={{
+                                        position: 'relative',
+                                        '&::after': {
+                                            content: '""',
+                                            position: 'absolute',
+                                            bottom: -8,
+                                            left: '50%',
+                                            transform: 'translateX(-50%)',
+                                            width: 40,
+                                            height: 3,
+                                            backgroundColor: theme.palette.primary.main,
+                                            borderRadius: 2
+                                        }
+                                    }}
+                                >
+                                    Categorías
+                                </Typography>
+                            </Box>
                             <List sx={{ p: 0 }}>
                                 {categories.map((cat) => (
                                     <ListItem key={cat} disablePadding sx={{ mb: 0.5 }}>
@@ -160,7 +207,10 @@ const ProductMain: FC<Props> = ({ products, loading = false }) => {
                                         >
                                             <ListItemText
                                                 primary={cat}
-                                                primaryTypographyProps={{ fontWeight: 500 }}
+                                                primaryTypographyProps={{
+                                                    fontWeight: 500,
+                                                    textAlign: 'center'
+                                                }}
                                             />
                                         </ListItemButton>
                                     </ListItem>
@@ -171,7 +221,21 @@ const ProductMain: FC<Props> = ({ products, loading = false }) => {
 
                     {/* Products Grid */}
                     <Grid item xs={12} md={9}>
-                        <Typography variant="h4" fontWeight={700} mb={4} color="text.primary">
+                        <Typography
+                            variant="h4"
+                            fontWeight={700}
+                            mb={4}
+                            sx={{
+                                color: '#fff',
+                                textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                                background: theme.palette.primary.main,
+                                display: 'inline-block',
+                                px: 3,
+                                py: 1,
+                                borderRadius: '8px',
+                                boxShadow: theme.shadows[2]
+                            }}
+                        >
                             {selectedCategory}
                         </Typography>
 
@@ -180,6 +244,8 @@ const ProductMain: FC<Props> = ({ products, loading = false }) => {
                                 {[...Array(6)].map((_, i) => (
                                     <Grid item xs={12} sm={6} md={4} key={i}>
                                         <Skeleton
+                                            variant="rectangular"
+                                            width="100%"
                                             height={300}
                                             sx={{
                                                 borderRadius: '12px',
@@ -210,8 +276,8 @@ const ProductMain: FC<Props> = ({ products, loading = false }) => {
                             </Box>
                         ) : (
                             <Grid container spacing={3}>
-                                {filteredProducts.map((product) => (
-                                    <Grid item xs={12} sm={6} md={4} key={product.id}>
+                                {filteredProducts.map((product, index) => (
+                                    <Grid item xs={12} sm={6} md={4} key={product._id ?? index}>
                                         <ProductCard product={product} />
                                     </Grid>
                                 ))}
@@ -219,7 +285,7 @@ const ProductMain: FC<Props> = ({ products, loading = false }) => {
                         )}
                     </Grid>
                 </Grid>
-            </Box>
+            </Box >
         </>
     );
 };

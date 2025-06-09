@@ -7,7 +7,7 @@ export const data: Array<Mentor> = [
     category: 'CEO',
     description:
       '',
-    contact: 'https://wa.me/79358533',
+    contact: 'https://wa.me/70715199',
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const data: Array<Mentor> = [
     category: 'Encargada de Ventas',
     description:
       '',
-    contact: 'https://wa.me/70715199',
+    contact: 'https://wa.me/70390831',
   },
   {
     id: 3,
@@ -23,6 +23,6 @@ export const data: Array<Mentor> = [
     category: 'Gerente General',
     description:
       '',
-    contact: 'https://wa.me/70390831',
+    contact: 'https://wa.me/79358533',
   },
 ]

@@ -1,6 +1,5 @@
 import React, { FC, useRef } from 'react'
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
 import Slider, { Settings } from 'react-slick'
 import Image from 'next/image'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
@@ -119,10 +118,8 @@ const FullScreenSlider: FC = () => {
                 <Image
                     src="/images/Banners_Backgrounds/Marca_NoBG.png"
                     alt="Marca NoBG"
-                    layout="responsive"
-                    width={1000}
-                    height={1000}
-                    objectFit="contain"
+                    fill
+                    style={{ objectFit: 'contain' }}
                 />
             </Box>
             <Slider ref={sliderRef} {...sliderConfig}>
@@ -153,15 +150,16 @@ const FullScreenSlider: FC = () => {
                                 margin: '0 auto',
                             }}
                         >
-                            <Image
-                                src={vehicle.imageUrl}
-                                alt={vehicle.name}
-                                layout="intrinsic"
-                                width={500}
-                                height={500}
-                                objectFit="contain"
-                                quality={100}
-                            />
+                            <div style={{ position: 'relative', width: '100%', height: '500px' }}>
+                                <Image
+                                    src={vehicle.imageUrl}
+                                    alt={vehicle.name}
+                                    fill
+                                    sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 40vw"
+                                    style={{ objectFit: 'contain' }}
+                                    quality={100}
+                                />
+                            </div>
                         </Box>
                         {/* Product Details */}
                         <ProductDetails vehicle={vehicle} />
