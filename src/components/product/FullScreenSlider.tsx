@@ -13,6 +13,8 @@ const FullScreenSlider: FC = () => {
     const sliderRef = useRef<Slider | null>(null);
     const [isMounted, setIsMounted] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+    const [currentVariantImages, setCurrentVariantImages] = useState<Record<number, string>>({});
 
     useEffect(() => {
         setIsMounted(true);
@@ -21,6 +23,15 @@ const FullScreenSlider: FC = () => {
         };
         checkMobile();
         window.addEventListener('resize', checkMobile);
+
+        // Initialize with default images for each vehicle
+        const initialImages: Record<number, string> = {};
+        vehicles.forEach((vehicle, index) => {
+            initialImages[index] = vehicle.variants.find(v => v.colorCode === vehicle.defaultColor)?.imageUrl ||
+                vehicle.variants[0].imageUrl;
+        });
+        setCurrentVariantImages(initialImages);
+
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
@@ -35,6 +46,14 @@ const FullScreenSlider: FC = () => {
         dots: false,
         cssEase: 'ease-in-out',
         pauseOnHover: true,
+        beforeChange: (current, next) => setCurrentSlideIndex(next),
+    };
+
+    const handleVariantChange = (variant: { colorCode: string; imageUrl: string; productUrl: string }) => {
+        setCurrentVariantImages(prev => ({
+            ...prev,
+            [currentSlideIndex]: variant.imageUrl
+        }));
     };
 
     if (!isMounted) {
@@ -175,7 +194,9 @@ const FullScreenSlider: FC = () => {
                         >
                             <div style={{ position: 'relative', width: '100%', height: '500px' }}>
                                 <Image
-                                    src={vehicle.imageUrl}
+                                    src={currentVariantImages[index] ||
+                                        vehicle.variants.find(v => v.colorCode === vehicle.defaultColor)?.imageUrl ||
+                                        vehicle.variants[0].imageUrl}
                                     alt={vehicle.name}
                                     fill
                                     sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 40vw"
@@ -184,7 +205,10 @@ const FullScreenSlider: FC = () => {
                                 />
                             </div>
                         </Box>
-                        <ProductDetails vehicle={vehicle} />
+                        <ProductDetails
+                            vehicle={vehicle}
+                            onVariantChange={handleVariantChange}
+                        />
                     </Box>
                 ))}
             </Slider>

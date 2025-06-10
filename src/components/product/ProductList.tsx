@@ -1,33 +1,81 @@
+export interface ColorVariant {
+    colorCode: string;
+    imageUrl: string;
+    productUrl: string; // Same for all variants of a product
+}
+
 export interface Vehicle {
     name: string;
-    imageUrl: string;
     speed: string;
     autonomy: string;
-    colors: string[];
+    defaultColor: string;
+    variants: ColorVariant[];
 }
 // PRODUCT LIST FOR FULLSCREEN SLIDER
 export const vehicles: Vehicle[] = [
     {
-        /* Motocicletas */
         name: 'Modelo 1',
-        imageUrl: '/images/products/Motos/Moto_IA1.png',
         speed: '75 km/h',
         autonomy: '200 km',
-        colors: ['#000000', '#FFFFFF', '#c92121'],
+        defaultColor: '#000000',
+        variants: [
+            {
+                colorCode: '#FFFFFF',
+                imageUrl: '/images/products/Motos/Moto1.png',
+                productUrl: '/products//',
+            },
+            {
+                colorCode: '#000000',
+                imageUrl: '/images/products/Motos/Moto2.png',
+                productUrl: '/products//',
+            },
+
+            {
+                colorCode: '#c92121',
+                imageUrl: '/images/products/Motos/Moto3.png',
+                productUrl: '/products//',
+            },
+        ],
     },
     {
         name: 'Modelo 2',
-        imageUrl: '/images/products/Motos/Moto_IA2.png',
         speed: '80 km/h',
         autonomy: '250 km',
-        colors: ['#000000', '#FFFFFF', '#B59F5A'],
+        defaultColor: '#000000',
+        variants: [
+            {
+                colorCode: '#E6FC74',
+                imageUrl: '/images/products/Bicis/Bici2.png',
+                productUrl: '/products//',
+            },
+            {
+                colorCode: '#C92121',
+                imageUrl: '/images/products/Bicis/Bici3.png',
+                productUrl: '/products//',
+            },
+        ],
     },
     {
-        /* Hovers */
         name: 'Modelo 3',
-        imageUrl: '/images/products/Hovers/hover1.png',
         speed: '90 km/h',
         autonomy: '300 km',
-        colors: ['#000000', '#FFFFFF', '#B59F5A'],
+        defaultColor: '#000000',
+        variants: [
+            {
+                colorCode: '#016cb6',
+                imageUrl: '/images/products/Hovers/hover2.png',
+                productUrl: '/products//',
+            },
+            {
+                colorCode: '#DADADA',
+                imageUrl: '/images/products/Hovers/hover3.png',
+                productUrl: '/products//',
+            },
+            {
+                colorCode: '#228340',
+                imageUrl: '/images/products/Hovers/hover10.png',
+                productUrl: '/products//',
+            },
+        ],
     },
 ];
