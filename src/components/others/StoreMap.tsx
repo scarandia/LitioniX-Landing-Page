@@ -22,7 +22,7 @@ const StoreMap: React.FC = () => {
 
   if (!isClient) return null;
 
-  const position: [number, number] = [-17.361214279971385, -66.17074390184784];
+  const position: [number, number] = [-17.363298103321366, -66.17135544899762];
 
   return (
     <Box sx={{ width: '100%', height: '100%' }}>

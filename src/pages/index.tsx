@@ -6,9 +6,9 @@ import { MainLayout } from '@/components/layout'
 
 const DynamicHomeHero = dynamic(() => import('../components/home/hero'))
 const DynamicHomeFeature = dynamic(() => import('../components/home/benefits'))
-const DynamicHomePopularCourse = dynamic(() => import('../components/home/popular-products'))
+const DynamicHomePopularCourse = dynamic(() => import('../components/product/popular-products'))
 const DynamicHomeTestimonial = dynamic(() => import('../components/home/history'))
-const DynamicHomeOurMentors = dynamic(() => import('../components/home/products'))
+/* const DynamicHomeOurMentors = dynamic(() => import('../components/home/old_products')) */
 const DynamicHomeNewsLetter = dynamic(() => import('../components/home/LocationSection'))
 
 const Home: NextPageWithLayout = () => {
@@ -18,7 +18,7 @@ const Home: NextPageWithLayout = () => {
       <DynamicHomePopularCourse />
       <DynamicHomeFeature />
       <DynamicHomeTestimonial />
-      <DynamicHomeOurMentors />
+      {/* <DynamicHomeOurMentors /> */}
       <DynamicHomeNewsLetter />
     </>
   )

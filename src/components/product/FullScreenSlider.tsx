@@ -1,37 +1,29 @@
-import React, { FC, useRef } from 'react'
-import Box from '@mui/material/Box'
-import Slider, { Settings } from 'react-slick'
-import Image from 'next/image'
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
-import ProductDetails from './ProductDetails'
-
-const vehicles: any[] = [
-    {
-        name: 'Modelo 1',
-        imageUrl: '/images/products/Moto_IA1.png',
-        speed: '75 km/h',
-        autonomy: '200 km',
-        colors: ['#000000', '#FFFFFF', '#B59F5A'],
-    },
-    {
-        name: 'Modelo 2',
-        imageUrl: '/images/products/Moto_IA2.png',
-        speed: '80 km/h',
-        autonomy: '250 km',
-        colors: ['#000000', '#FFFFFF', '#B59F5A'],
-    },
-    {
-        name: 'Modelo 3',
-        imageUrl: '/images/products/hover1.png',
-        speed: '90 km/h',
-        autonomy: '300 km',
-        colors: ['#000000', '#FFFFFF', '#B59F5A'],
-    },
-]
+'use client';
+import React, { FC, useRef, useState, useEffect } from 'react';
+import Box from '@mui/material/Box';
+import Slider, { Settings } from 'react-slick';
+import Image from 'next/image';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ProductDetails from './ProductDetails';
+import { LoadingScreen } from '../others/LoadingScreen';
+import { vehicles } from './ProductList';
 
 const FullScreenSlider: FC = () => {
-    const sliderRef = useRef<Slider | null>(null)
+    const sliderRef = useRef<Slider | null>(null);
+    const [isMounted, setIsMounted] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 900);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     const sliderConfig: Settings = {
         infinite: true,
         autoplay: true,
@@ -43,6 +35,21 @@ const FullScreenSlider: FC = () => {
         dots: false,
         cssEase: 'ease-in-out',
         pauseOnHover: true,
+    };
+
+    if (!isMounted) {
+        return (
+            <Box sx={{
+                width: '100%',
+                height: '100vh',
+                backgroundColor: '#EFEAE7',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}>
+                <LoadingScreen />
+            </Box>
+        );
     }
 
     return (
@@ -57,7 +64,40 @@ const FullScreenSlider: FC = () => {
             borderRadius: { xs: 0, md: 4 },
             boxShadow: { xs: 'none', md: 3 },
         }}>
-            {/* Decorative Arrows */}
+            {/* Background Image */}
+            {isMounted && (
+                <Box sx={{
+                    position: 'absolute',
+                    top: { xs: '10%', md: '-10%' },
+                    left: { xs: '-10%', md: '-10%' },
+                    right: { xs: '-10%', md: '-10%' },
+                    bottom: { xs: 'auto', md: '-10%' },
+                    height: { xs: '60%', md: 'auto' },
+                    zIndex: 0,
+                    opacity: 0.45,
+                    pointerEvents: 'none',
+                }}>
+                    <div style={{
+                        position: 'relative',
+                        width: '100%',
+                        height: '100%',
+                    }}>
+                        <Image
+                            src="/images/Banners_Backgrounds/Marca_NoBG.png"
+                            alt="Background Brand"
+                            fill
+                            style={{
+                                objectFit: 'contain',
+                                objectPosition: 'center',
+                            }}
+                            quality={100}
+                            priority
+                        />
+                    </div>
+                </Box>
+            )}
+
+            {/* Navigation Arrows */}
             <Box sx={{
                 display: { xs: 'none', md: 'flex' },
                 position: 'absolute',
@@ -84,7 +124,8 @@ const FullScreenSlider: FC = () => {
             }}>
                 <ArrowForwardIosIcon fontSize="inherit" />
             </Box>
-            {/* Click areas */}
+
+            {/* Clickable areas for navigation */}
             <Box sx={{
                 position: 'absolute',
                 top: 0,
@@ -103,25 +144,8 @@ const FullScreenSlider: FC = () => {
                 zIndex: 10,
                 cursor: 'pointer',
             }} onClick={() => sliderRef.current?.slickNext()} />
-            {/* Background Image */}
-            <Box sx={{
-                position: 'absolute',
-                top: '40%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                zIndex: 0,
-                width: { xs: '100%', sm: '80%', md: '60%' },
-                height: 'auto',
-                opacity: 0.45,
-                pointerEvents: 'none',
-            }}>
-                <Image
-                    src="/images/Banners_Backgrounds/Marca_NoBG.png"
-                    alt="Marca NoBG"
-                    fill
-                    style={{ objectFit: 'contain' }}
-                />
-            </Box>
+
+            {/* Slider */}
             <Slider ref={sliderRef} {...sliderConfig}>
                 {vehicles.map((vehicle, index) => (
                     <Box
@@ -138,7 +162,6 @@ const FullScreenSlider: FC = () => {
                             pt: { xs: 6, md: 0 },
                         }}
                     >
-                        {/* Product Image */}
                         <Box
                             sx={{
                                 position: 'relative',
@@ -161,13 +184,12 @@ const FullScreenSlider: FC = () => {
                                 />
                             </div>
                         </Box>
-                        {/* Product Details */}
                         <ProductDetails vehicle={vehicle} />
                     </Box>
                 ))}
             </Slider>
         </Box>
-    )
-}
+    );
+};
 
-export default FullScreenSlider
+export default FullScreenSlider;

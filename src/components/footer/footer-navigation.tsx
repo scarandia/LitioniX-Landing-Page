@@ -8,20 +8,16 @@ import { FooterSectionTitle } from '@/components/footer'
 
 const courseMenu: Array<Navigation> = [
   {
-    label: 'Bicicletas Eléctricas',
-    path: '#',
+    label: 'Bicicletas',
+    path: '/bicicletas-electricas',
   },
   {
-    label: 'Scooters',
-    path: '#',
+    label: 'Motocicletas',
+    path: '/motocicletas-electricas',
   },
   {
-    label: 'Pantallas',
-    path: '#',
-  },
-  {
-    label: 'Hover Boards',
-    path: '#',
+    label: 'Baterías de Litio',
+    path: '/baterias-litio',
   },
 ]
 
@@ -41,18 +37,18 @@ interface NavigationItemProps {
 
 const NavigationItem: FC<NavigationItemProps> = ({ label, path }) => {
   return (
-    <Link href={path} passHref>
-      <MuiLink
-        underline="hover"
-        sx={{
-          display: 'block',
-          mb: 1,
-          color: 'primary.contrastText',
-        }}
-      >
-        {label}
-      </MuiLink>
-    </Link>
+    <MuiLink
+      component={Link}
+      href={path}
+      underline="hover"
+      sx={{
+        display: 'block',
+        mb: 1,
+        color: 'primary.contrastText',
+      }}
+    >
+      {label}
+    </MuiLink>
   )
 }
 
@@ -62,11 +58,11 @@ const FooterNavigation: FC = () => {
       <Grid item xs={6} md={4}>
         <FooterSectionTitle title="Productos" />
         {courseMenu.map(({ label, path }, index) => (
-          <NavigationItem key={index + path} label={label} path={/* path */ '#'} />
+          <NavigationItem key={index + path} label={label} path={path} />
         ))}
       </Grid>
       <Grid item xs={6} md={4}>
-        <FooterSectionTitle title="Menu" />
+        <FooterSectionTitle title="Menú" />
         {pageMenu.map(({ label, path }, index) => (
           <NavigationItem key={index + path} label={label} path={path} />
         ))}

@@ -11,28 +11,28 @@ const HistorySection: FC = () => {
     {
       year: '2017',
       title: 'El Comienzo',
-      content: 'Comenzamos con una idea simple: hacer la movilidad más limpia, accesible y eficiente.',
+      content: 'Un sueño en 2017 con una visión clara: impulsar la movilidad eléctrica en Bolivia con tecnología de calidad.',
       icon: '🚀',
       color: '#59656F'
     },
     {
       year: '2018',
-      title: 'Primer Producto',
-      content: 'Lanzamos nuestra primera bicicleta eléctrica, revolucionando el mercado local.',
+      title: 'Los Desafios',
+      content: 'Los desafíos no tardaron en llegar. El mercado aún no estaba preparado y la pandemia nos obligó a replantear el camino.',
       icon: '🚲',
       color: '#59656F'
     },
     {
       year: '2021',
-      title: 'Expansión Global',
-      content: 'Llevamos nuestras soluciones a más de 10 países con tecnología boliviana.',
+      title: 'Un giro hacia la Sostenibilidad',
+      content: 'Nos adaptamos. Redirigimos nuestro enfoque a lo esencial: la comercialización de celdas de litio, apostando por energía limpia y eficiente.',
       icon: '🌎',
       color: '#59656F'
     },
     {
       year: '2025',
       title: 'Innovación Continua',
-      content: 'Convertimos desafíos en oportunidades, manteniendo nuestro compromiso con la sostenibilidad.',
+      content: 'Bolivia enfrenta una nueva realidad energética, y Litionix está preparada para responder. Regresamos con motos eléctricas confiables, duraderas y tecnológicas, comprometidas con un futuro más sostenible.',
       icon: '⚡',
       color: '#59656F'
     }
