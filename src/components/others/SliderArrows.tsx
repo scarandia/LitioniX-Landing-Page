@@ -38,7 +38,7 @@ export const CustomPrevArrow = (props: any): JSX.Element => {
     )
 }
 
-export const CustomNextArrow = (props: any) => {
+export const CustomNextArrow = (props: any): JSX.Element => {
     const { className, onClick } = props
     return (
         <Box

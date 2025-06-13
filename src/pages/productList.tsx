@@ -6,6 +6,7 @@ export const products = [
     //{ _id: '2', name: 'Bicicleta 2', images: ['/images/products/Bicis/bici3.png'], category: 'Bicicletas eléctricas', description: 'Descripcion Producto' },
     { _id: '3', name: 'Motocicleta 1', images: ['/images/products/Motos/moto1.png', '/images/products/Motos/moto2.png', '/images/products/Motos/moto3.png', '/images/products/Motos/moto6.png'], category: 'Motocicletas eléctricas', description: 'Motocicleta eléctrica de alto rendimiento, perfecta para desplazamientos diarios y trayectos urbanos. Cuenta con un diseño robusto y silencioso, bajo mantenimiento y cero emisiones.' },
     { _id: '4', name: 'Motocicleta 2', images: ['/images/products/Motos/Moto2/Moto1.jpg'], category: 'Motocicletas eléctricas', description: 'Motocicleta eléctrica de alto rendimiento, perfecta para desplazamientos diarios y trayectos urbanos. Cuenta con un diseño robusto y silencioso, bajo mantenimiento y cero emisiones.' },
+    //{ _id: '4', name: 'Motocicleta 3', images: ['/images/products/Motos/Moto3/Moto1.jpg'], category: 'Motocicletas eléctricas', description: 'Motocicleta eléctrica de alto rendimiento, perfecta para desplazamientos diarios y trayectos urbanos. Cuenta con un diseño robusto y silencioso, bajo mantenimiento y cero emisiones.' },
     { _id: '5', name: 'Hoverboard 1', images: ['/images/products/Hovers/hover1.png', '/images/products/Hovers/hover2.png', '/images/products/Hovers/hover3.png', '/images/products/Hovers/hover4.png', '/images/products/Hovers/hover5.png', '/images/products/Hovers/hover7.png', '/images/products/Hovers/hover8.png', '/images/products/Hovers/hover9.png'], category: 'Hoverboards', description: 'Hoverboard eléctrico de última generación con sensores de equilibrio inteligente. Ideal para diversión y desplazamientos cortos, fácil de usar y con diseño futurista.' },
     //{ _id: '6', name: 'Hoverboard 2', images: ['/images/products/Hovers/hover2.png'], category: 'Hoverboards', description: 'Descripcion Producto' },
     { _id: '9', name: 'Litvan 1', images: ['/images/products/Vans/Litvan0.png', '/images/products/Vans/Litvan1.png', '/images/products/Vans/Litvan2.png', '/images/products/Vans/Litvan3.png', '/images/products/Vans/Litvan4.png', '/images/products/Vans/Litvan5.png', '/images/products/Vans/Litvan6.png', '/images/products/Vans/Litvan7.png', '/images/products/Vans/Litvan8.png'], category: 'Minivan eléctrico', description: 'Minivan eléctrica diseñada para transporte urbano o comercial. Espaciosa, eficiente y con batería de alto rendimiento. Incorpora ficha técnica descargable para más detalles técnicos.', techSheetUrl: '/images/products/Vans/Fichas/fichaLitvan1.pdf' },
@@ -14,7 +15,7 @@ export const products = [
     //{ _id: '12', name: 'Celda 2', images: ['/images/products/Celdas/celdas2.jpg'], category: 'Celdas de Litio', description: 'Descripcion Producto' },
 ]
 
-const ProductsPage = () => {
+const ProductsPage = (): JSX.Element => {
     return <ProductMain products={products} />
 }
 

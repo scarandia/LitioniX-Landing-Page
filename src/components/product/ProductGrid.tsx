@@ -23,7 +23,7 @@ const products = [
     },
     {
         name: 'Hoverboards',
-        imageUrl: '/images/products/Hovers/hover8.jpg',
+        imageUrl: '/images/products/Hovers/hover8.png',
         category: 'Hoverboards',
         accentColor: '#F25F5C',
         description: 'Diversión y movilidad'

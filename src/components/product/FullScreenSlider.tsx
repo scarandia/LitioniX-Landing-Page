@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Slider, { Settings } from 'react-slick';
 import Image from 'next/image';
@@ -9,7 +9,7 @@ import ProductDetails from './ProductDetails';
 import { LoadingScreen } from '../others/LoadingScreen';
 import { vehicles } from './ProductList';
 
-const FullScreenSlider: FC = () => {
+const FullScreenSlider = (): JSX.Element => {
     const sliderRef = useRef<Slider | null>(null);
     const [isMounted, setIsMounted] = useState(false);
     const [isMobile, setIsMobile] = useState(false);

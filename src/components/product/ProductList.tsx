@@ -39,8 +39,8 @@ export const vehicles: Vehicle[] = [
     },
     {
         name: 'Modelo 2',
-        speed: '80 km/h',
-        autonomy: '250 km',
+        speed: '30 km/h',
+        autonomy: '70 km',
         defaultColor: '#000000',
         variants: [
             {
@@ -57,8 +57,8 @@ export const vehicles: Vehicle[] = [
     },
     {
         name: 'Modelo 3',
-        speed: '90 km/h',
-        autonomy: '300 km',
+        speed: '10 km/h',
+        autonomy: '50 km',
         defaultColor: '#000000',
         variants: [
             {

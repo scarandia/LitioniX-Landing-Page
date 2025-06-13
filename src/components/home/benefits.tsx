@@ -17,7 +17,7 @@ const HomeFeature: FC = () => {
         position: 'relative',
         overflow: 'hidden',
         '&::before': {
-          content: "''",  // comillas simples dentro de string doble
+          content: '""',  // contenido vacío con comillas dobles
           position: 'absolute',
           top: 0,
           left: 0,
@@ -99,7 +99,7 @@ const HomeFeature: FC = () => {
                   color: 'white',
                   position: 'relative',
                   '&::after': {
-                    content: "''", // comillas simples dentro string doble
+                    content: '""', // comillas dobles para contenido vacío
                     position: 'absolute',
                     bottom: -10,
                     left: 0,

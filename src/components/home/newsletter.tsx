@@ -49,7 +49,7 @@ const HomeNewsLetter = (): JSX.Element => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e: React.MouseEvent) => {
+  const handleSubmit = async (e: React.MouseEvent): Promise<void> => {
     e.preventDefault();
 
     if (!message.trim()) return;
@@ -190,7 +190,7 @@ const HomeNewsLetter = (): JSX.Element => {
               maxRows={4}
             />
             <Box sx={{ width: { xs: '100%', md: 'auto' } }}>
-              <StyledButton
+              {/* <StyledButton
                 disableHoverEffect
                 size="large"
                 onClick={handleSubmit}
@@ -206,7 +206,7 @@ const HomeNewsLetter = (): JSX.Element => {
                 }}
               >
                 {isLoading ? 'Enviando...' : 'Enviar'}
-              </StyledButton>
+              </StyledButton> */}
             </Box>
           </Box>
         </AnimatedBox>
