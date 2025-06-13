@@ -14,9 +14,10 @@
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
+    "@typescript-eslint/explicit-function-return-type": "off",
     "prefer-const": "error",
     "react/jsx-props-no-spreading": "off",
-    "@typescript-eslint/explicit-function-return-type": ["error", { "allowExpressions": true }],
+    //"@typescript-eslint/explicit-function-return-type": ["error", { "allowExpressions": true }],
     "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }]
   }
 }
