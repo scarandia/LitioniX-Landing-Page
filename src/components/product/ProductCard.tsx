@@ -16,7 +16,7 @@ const ProductCard: FC<{ product: Product; priority?: boolean }> = ({ product, pr
     const theme = useTheme();
     const router = useRouter();
 
-    const handleClick = () => {
+    const handleClick = (): void => {
         router.push(`/products/${product._id}`);
     };
 

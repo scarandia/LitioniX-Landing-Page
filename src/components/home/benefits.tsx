@@ -5,7 +5,6 @@ import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { motion } from 'framer-motion'
-import { styled } from '@mui/material/styles'
 import { data } from './benefits.data'
 
 const HomeFeature: FC = () => {
@@ -18,7 +17,7 @@ const HomeFeature: FC = () => {
         position: 'relative',
         overflow: 'hidden',
         '&::before': {
-          content: '""',
+          content: "''",  // comillas simples dentro de string doble
           position: 'absolute',
           top: 0,
           left: 0,
@@ -100,7 +99,7 @@ const HomeFeature: FC = () => {
                   color: 'white',
                   position: 'relative',
                   '&::after': {
-                    content: '""',
+                    content: "''", // comillas simples dentro string doble
                     position: 'absolute',
                     bottom: -10,
                     left: 0,
@@ -120,8 +119,8 @@ const HomeFeature: FC = () => {
                 fontSize: 18,
                 lineHeight: 1.7
               }}>
-                Los vehículos eléctricos ofrecen múltiples beneficios tanto para el medio ambiente como para sus usuarios.
-                Al no emitir gases contaminantes, ayudan a reducir la huella de carbono y mejorar la calidad del aire en las ciudades.
+                {`Los vehículos eléctricos ofrecen múltiples beneficios tanto para el medio ambiente como para sus usuarios.
+                Al no emitir gases contaminantes, ayudan a reducir la huella de carbono y mejorar la calidad del aire en las ciudades.`}
               </Typography>
 
               <Grid container spacing={3}>
@@ -199,8 +198,8 @@ const HomeFeature: FC = () => {
                   fontSize: 18,
                   lineHeight: 1.7
                 }}>
-                  "Al elegir Litionix, no solo adquieres un vehículo, sino que te unes a un movimiento
-                  que transforma el transporte boliviano con tecnología sostenible."
+                  {`"Al elegir Litionix, no solo adquieres un vehículo, sino que te unes a un movimiento
+                  que transforma el transporte boliviano con tecnología sostenible."`}
                 </Typography>
               </Box>
             </motion.div>

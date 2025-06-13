@@ -4,7 +4,6 @@ import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { motion } from 'framer-motion'
-import { styled } from '@mui/material/styles'
 
 const HistorySection: FC = () => {
   const historyItems = [
@@ -76,7 +75,7 @@ const HistorySection: FC = () => {
                   mb: 3,
                   position: 'relative',
                   '&::after': {
-                    content: '""',
+                    content: '" "',  // aquí corregido
                     position: 'absolute',
                     bottom: -10,
                     left: 0,
@@ -117,7 +116,7 @@ const HistorySection: FC = () => {
                 mt: 4,
                 position: 'relative',
                 '&::before, &::after': {
-                  content: '""',
+                  content: '" "', // aquí corregido
                   position: 'absolute',
                   top: '50%',
                   width: '30%',
