@@ -52,7 +52,7 @@ const HomeFeature: FC = () => {
                 }}
               >
                 <Image
-                  src="/images/products/HD4.png"
+                  src="/images/products/Motos/41.jpg"
                   width={768}
                   height={761}
                   quality={100}

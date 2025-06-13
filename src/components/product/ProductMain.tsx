@@ -8,10 +8,8 @@ import CategorySidebar from './CategorySidebar';
 interface Product {
     _id: string;
     name: string;
-    imageUrl: string;
+    images: string[];
     category: string;
-    price?: number;
-    rating?: number;
     description?: string;
 }
 
@@ -38,7 +36,11 @@ const ProductMain: FC<Props> = ({ products, loading = false }) => {
     }, [products, category]);
 
     const handleCategoryClick = (category: string) => {
-        router.push({ pathname: '/products', query: { category } }, undefined, { shallow: true });
+        router.push({ pathname: '/productList', query: { category } }, undefined, { shallow: true });
+    };
+
+    const handleProductClick = (productId: string) => {
+        router.push(`/products/${productId}`);
     };
 
     return (
@@ -109,7 +111,13 @@ const ProductMain: FC<Props> = ({ products, loading = false }) => {
                             <Grid container spacing={3}>
                                 {filteredProducts.map((product, index) => (
                                     <Grid item xs={12} sm={6} md={4} key={product._id}>
-                                        <ProductCard product={product} priority={index === 0} />
+                                        <ProductCard
+                                            product={{
+                                                ...product,
+                                                imageUrl: product.images[0]
+                                            }}
+                                            priority={index === 0}
+                                        />
                                     </Grid>
                                 ))}
                             </Grid>

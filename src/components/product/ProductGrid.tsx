@@ -10,35 +10,35 @@ const products = [
     {
         name: 'Bicicletas Eléctricas',
         imageUrl: '/images/products/Bicis/bici1.jpg',
-        category: 'bicicletas-electricas',
+        category: 'Bicicletas+eléctricas',
         accentColor: '#4ECDC4',
         description: 'Movilidad urbana sostenible'
     },
     {
         name: 'Motocicletas Eléctricas',
         imageUrl: '/images/products/Motos/moto6.jpg',
-        category: 'motocicletas-electricas',
+        category: 'Motocicletas+eléctricas',
         accentColor: '#FFD166',
         description: 'Potencia y autonomía'
     },
     {
         name: 'Hoverboards',
         imageUrl: '/images/products/Hovers/hover8.jpg',
-        category: 'hoverboards',
+        category: 'Hoverboards',
         accentColor: '#F25F5C',
         description: 'Diversión y movilidad'
     },
     {
         name: 'Miniván Eléctrico',
-        imageUrl: '/images/products/Vans/van2_white_bg.png',
-        category: 'minivan-electrico',
+        imageUrl: '/images/products/Vans/Litvan0.png',
+        category: 'Minivan+eléctrico',
         accentColor: '#7E6B8F',
         description: 'Transporte familiar sin emisiones'
     },
     {
         name: 'Baterías de Litio',
         imageUrl: '/images/products/Celdas/Litio_batteries.png',
-        category: 'baterias-litio',
+        category: 'Celdas+de+Litio',
         accentColor: '#A5D8FF',
         description: 'Energía limpia y eficiente'
     }
@@ -81,7 +81,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isHovered }) => {
             transition={{ duration: 0.3 }}
             style={{ width: '100%' }}
         >
-            <Link href={`/productos/${product.category}`} passHref>
+            <Link href={`/productList?category=${product.category}`} passHref>
                 <Box
                     sx={{
                         position: 'relative',
@@ -220,7 +220,7 @@ const ProductGrid = () => {
                 <Box textAlign="center" mt={6}>
                     <IconButton
                         component={Link}
-                        href="/products"
+                        href="/productList"
                         sx={{
                             color: '#fff',
                             backgroundColor: 'rgba(78,205,196,0.2)',

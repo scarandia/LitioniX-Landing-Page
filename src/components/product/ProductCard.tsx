@@ -74,7 +74,7 @@ const ProductCard: FC<{ product: Product; priority?: boolean }> = ({ product, pr
                             }}
                         />
                     )}
-                    <Link href={`/products?category=${encodeURIComponent(product.category)}`} passHref>
+                    <Link href={`/productList?category=${encodeURIComponent(product.category)}`} passHref>
                         <Typography
                             component="span"
                             sx={{

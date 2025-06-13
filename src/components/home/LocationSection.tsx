@@ -87,7 +87,7 @@ const LocationSection: React.FC = () => {
             mx: 'auto',
             lineHeight: 1.6
           }}>
-            Nuestra tienda está ubicada en {address}. ¡Te esperamos!
+            Nuestra tienda está ubicada en {address}.
           </Typography>
 
           <Box sx={{
@@ -105,7 +105,7 @@ const LocationSection: React.FC = () => {
             color: 'rgba(255, 255, 255, 0.7)',
             fontSize: 14
           }}>
-            Horario de atención: Lunes a Viernes 9:00 - 18:00 | Sábados 9:00 - 13:00
+            Horario de atención: Lunes a Jueves 8:00 - 18:30 | Viernes 8:00 - 16:00
           </Typography>
         </AnimatedBox>
       </Container>

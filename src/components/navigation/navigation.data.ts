@@ -7,7 +7,7 @@ export const navigations: Navigation[] = [
   },
   {
     label: 'Productos',
-    path: '/products',
+    path: '/productList',
   },
   {
     label: 'Sobre Nosotros',
@@ -15,10 +15,10 @@ export const navigations: Navigation[] = [
   },
   {
     label: 'Contáctanos',
-    path: '/#mentors',
+    path: '/#contactos',
   },
   {
-    label: 'images/icons/location3.svg',
+    label: '/images/icons/location3.svg',
     path: '/#location',
   },
 ]
