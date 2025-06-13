@@ -9,7 +9,7 @@ export const socialLinks: SocialLink[] = [
     link: 'https://www.instagram.com/litionix?igsh=MThlZ3U5NG1jNjRxYg==',
     icon: '/images/icons/instagram.svg',
   },
-  {
+  /* {
     name: 'YouTube',
     link: 'https://www.youtube.com/',
     icon: '/images/icons/youtube.svg',
@@ -18,10 +18,10 @@ export const socialLinks: SocialLink[] = [
     name: 'Twitter',
     link: 'https://x.com',
     icon: '/images/icons/Xicon.png',
-  },
+  }, */
   {
     name: 'Facebook',
-    link: 'https://facebook.com',
+    link: 'https://www.facebook.com/litionix/',
     icon: '/images/icons/white_facebook.png',
   },
   {
@@ -29,6 +29,11 @@ export const socialLinks: SocialLink[] = [
     link: 'https://wa.me/59170715199',
     icon: '/images/icons/D_whatsapp.png',
   },
+  {
+    name: 'TikTok',
+    link: 'https://www.tiktok.com/@litionix',
+    icon: '/images/icons/tiktok.png',
+  }
 ]
 
 interface SocialLinkItemProps {

@@ -9,25 +9,25 @@ import { FooterSectionTitle } from '@/components/footer'
 const courseMenu: Array<Navigation> = [
   {
     label: 'Bicicletas',
-    path: '/bicicletas-electricas',
+    path: '/productList?category=Bicicletas+eléctricas',
   },
   {
     label: 'Motocicletas',
-    path: '/motocicletas-electricas',
+    path: '/productList?category=Motocicletas+eléctricas',
   },
   {
     label: 'Baterías de Litio',
-    path: '/baterias-litio',
+    path: '/productList?category=Celdas+de+Litio',
   },
 ]
 
 const pageMenu = headerNavigations
 
 const companyMenu: Array<Navigation> = [
-  { label: 'Instagram', path: '#' },
-  { label: 'Whatsapp', path: '#' },
-  { label: 'Facebook', path: '#' },
-  { label: '¿Sabìas Que?', path: '#' },
+  { label: 'Instagram', path: 'https://www.instagram.com/litionix?igsh=MThlZ3U5NG1jNjRxYg==' },
+  { label: 'Whatsapp', path: 'https://wa.me/59170715199', },
+  { label: 'Facebook', path: 'https://www.facebook.com/litionix/' },
+  { label: 'TikTok', path: 'https://www.tiktok.com/@litionix' },
 ]
 
 interface NavigationItemProps {
@@ -63,9 +63,11 @@ const FooterNavigation: FC = () => {
       </Grid>
       <Grid item xs={6} md={4}>
         <FooterSectionTitle title="Menú" />
-        {pageMenu.map(({ label, path }, index) => (
-          <NavigationItem key={index + path} label={label} path={path} />
-        ))}
+        {pageMenu
+          .filter(item => item.label !== '/images/icons/location3.svg')
+          .map(({ label, path }, index) => (
+            <NavigationItem key={index + path} label={label} path={path} />
+          ))}
       </Grid>
       <Grid item xs={6} md={4}>
         <FooterSectionTitle title="Nosotros" />

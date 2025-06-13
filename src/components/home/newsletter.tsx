@@ -43,7 +43,7 @@ const StyledInput = styled(InputBase)(({ theme }) => ({
   }
 }));
 
-const HomeNewsLetter: FC = () => {
+const HomeNewsLetter = (): JSX.Element => {
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);

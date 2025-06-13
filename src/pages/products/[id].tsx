@@ -25,7 +25,7 @@ interface Product {
   techSheetUrl?: string;
 }
 
-const ProductDetail = () => {
+const ProductDetail = (): JSX.Element => {
   const router = useRouter();
   const { id } = router.query;
   const theme = useTheme();
@@ -34,7 +34,7 @@ const ProductDetail = () => {
 
   const product = products.find(p => p._id === id) as Product | undefined;
 
-  const scrollThumbnails = (direction: 'left' | 'right') => {
+  const scrollThumbnails = (direction: 'left' | 'right'): void => {
     const container = thumbnailContainerRef.current;
     if (container) {
       const scrollAmount = 100;

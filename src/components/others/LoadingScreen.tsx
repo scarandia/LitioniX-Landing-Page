@@ -1,6 +1,6 @@
 import { Box, CircularProgress } from '@mui/material';
 
-export const LoadingScreen = () => (
+export const LoadingScreen = (): JSX.Element => (
     <Box
         sx={{
             position: 'fixed',

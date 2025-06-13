@@ -12,7 +12,7 @@ interface Product {
     price?: number;
 }
 
-const ProductCard: FC<{ product: Product; priority?: boolean }> = ({ product, priority }) => {
+const ProductCard: FC<{ product: Product; priority?: boolean }> = ({ product, priority }): JSX.Element => {
     const theme = useTheme();
     const router = useRouter();
 
@@ -76,15 +76,15 @@ const ProductCard: FC<{ product: Product; priority?: boolean }> = ({ product, pr
                     )}
                     <Link href={`/productList?category=${encodeURIComponent(product.category)}`} passHref>
                         <Typography
-                            component="span"
+                            component="a"
                             sx={{
                                 ml: 2,
                                 fontWeight: 500,
                                 color: theme.palette.secondary.main,
                                 textDecoration: 'none',
                                 '&:hover': {
-                                    textDecoration: 'underline'
-                                }
+                                    textDecoration: 'underline',
+                                },
                             }}
                         >
                             {product.category}

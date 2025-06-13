@@ -8,7 +8,7 @@ interface ProductDetailsProps {
     onVariantChange: (variant: ColorVariant) => void;
 }
 
-const ProductDetails = ({ vehicle, onVariantChange }: ProductDetailsProps) => {
+const ProductDetails = ({ vehicle, onVariantChange }: ProductDetailsProps): JSX.Element => {
     const [selectedVariant, setSelectedVariant] = useState<ColorVariant>(
         vehicle.variants.find(v => v.colorCode === vehicle.defaultColor) || vehicle.variants[0]
     );

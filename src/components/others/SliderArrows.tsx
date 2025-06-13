@@ -2,7 +2,7 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import Image from 'next/image'
 
-export const CustomPrevArrow = (props: any) => {
+export const CustomPrevArrow = (props: any): JSX.Element => {
     const { className, onClick } = props
     return (
         <Box

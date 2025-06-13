@@ -18,7 +18,7 @@ interface Props {
     loading?: boolean;
 }
 
-const ProductMain: FC<Props> = ({ products, loading = false }) => {
+const ProductMain: FC<Props> = ({ products, loading = false }): JSX.Element => {
     const router = useRouter();
     const theme = useTheme();
     const { category } = router.query;

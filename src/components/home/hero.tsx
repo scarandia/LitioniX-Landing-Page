@@ -147,18 +147,18 @@ const HomeHero: FC = () => {
                   offset={-80}
                   duration={500}
                 >
-                  <StyledButton
+                  {/*  <StyledButton
                     color="primary"
                     size={isMobile ? 'medium' : 'large'}
                     variant="contained"
-                  /* sx={{
+                   sx={{
                     px: 4,
                     py: 1.5,
                     fontWeight: 'bold',
-                  }} */
+                  }}
                   >
                     Conoce Más
-                  </StyledButton>
+                  </StyledButton> */}
                 </ScrollLink>
               </Box>
             </Box>

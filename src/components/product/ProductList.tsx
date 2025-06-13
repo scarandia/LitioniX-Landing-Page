@@ -73,7 +73,7 @@ export const vehicles: Vehicle[] = [
             },
             {
                 colorCode: '#228340',
-                imageUrl: '/images/products/Hovers/hover10.png',
+                imageUrl: '/images/products/Hovers/hover9.png',
                 productUrl: '/products//',
             },
         ],

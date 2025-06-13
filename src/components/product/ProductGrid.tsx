@@ -57,7 +57,7 @@ interface ProductCardProps {
     isHovered: boolean;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, isHovered }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, isHovered }): JSX.Element => {
     const [isMobile, setIsMobile] = useState(false);
     const [mounted, setMounted] = useState(false);
 
@@ -81,7 +81,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isHovered }) => {
             transition={{ duration: 0.3 }}
             style={{ width: '100%' }}
         >
-            <Link href={`/productList?category=${product.category}`} passHref>
+            <Link href={`/productList?category=${product.category}`}>
                 <Box
                     sx={{
                         position: 'relative',
@@ -127,7 +127,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isHovered }) => {
     );
 };
 
-const ProductGrid = () => {
+const ProductGrid = (): JSX.Element => {
     const [mounted, setMounted] = useState(false);
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const [isMobile, setIsMobile] = useState(false);
