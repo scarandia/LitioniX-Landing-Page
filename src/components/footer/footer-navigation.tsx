@@ -58,22 +58,19 @@ const FooterNavigation: FC = () => {
       <Grid item xs={6} md={4}>
         <FooterSectionTitle title="Productos" />
         {courseMenu.map(({ label, path }, index) => (
-          <NavigationItem key={index + path} label={label} path={path} />
+          <NavigationItem key={index + path} label={label as string} path={path} />
         ))}
       </Grid>
       <Grid item xs={6} md={4}>
         <FooterSectionTitle title="Menú" />
         {pageMenu
-          .filter(item => item.label !== '/images/icons/location3.svg')
+          .filter((item): item is { label: string; path: string } =>
+            typeof item.label === 'string' && item.label !== '/images/icons/location3.svg'
+          )
           .map(({ label, path }, index) => (
             <NavigationItem key={index + path} label={label} path={path} />
           ))}
-      </Grid>
-      <Grid item xs={6} md={4}>
-        <FooterSectionTitle title="Nosotros" />
-        {companyMenu.map(({ label, path }, index) => (
-          <NavigationItem key={index + path} label={label} path={path} />
-        ))}
+
       </Grid>
     </Grid>
   )
