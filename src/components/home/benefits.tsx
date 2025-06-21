@@ -50,17 +50,15 @@ const HomeFeature: FC = () => {
                   border: '1px solid rgba(78, 205, 196, 0.3)'
                 }}
               >
-                <Image
+                <img
                   src="/images/products/Motos/41.jpg"
-                  width={768}
-                  height={761}
-                  quality={100}
                   alt="Beneficios de movilidad eléctrica"
                   style={{
                     width: '100%',
                     height: 'auto',
                     objectFit: 'cover',
                   }}
+                  loading="lazy"
                 />
                 <Box sx={{
                   position: 'absolute',

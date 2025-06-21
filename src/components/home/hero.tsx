@@ -39,17 +39,20 @@ const HomeHero: FC = () => {
             zIndex: 0,
           }}
         >
-          <Image
+          <img
             src="/images/Banners_Backgrounds/Banner/Banner7_edit.jpg"
             alt="Hero background"
-            fill
-            priority
-            quality={90}
-            sizes="100vw"
             style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
               objectFit: 'cover',
               objectPosition: 'center',
+              zIndex: 0,
             }}
+            loading="eager"
           />
         </Box>
       )}
