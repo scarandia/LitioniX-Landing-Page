@@ -283,7 +283,7 @@ const HistorySection: FC = () => {
                           borderRadius: '50%',
                         }} */
                         >
-                          <Image src="/images/icons/gear.png" alt="Img_Historia" width={56} height={56} />
+                          <img src="/images/icons/gear.png" alt="Img_Historia" width={56} height={56} />
                         </Box>
                         {item.year} — {item.title}
                       </Typography>

@@ -43,11 +43,10 @@ const TestimonialItem: FC<Props> = ({ item }) => {
             },
           }}
         >
-          <Image
-            src={`/images/avatars/${item.user.photo}`}
+          <img
+            src={`/public/images/avatars/${item.user.photo}`}
             width={100}
             height={100}
-            quality={97}
             alt={item.user.name}
           />
         </Box>

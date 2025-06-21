@@ -28,8 +28,8 @@ export const CustomPrevArrow = (props: any): JSX.Element => {
                 },
             }}
         >
-            <Image
-                src="/images/icons/left-arrow.svg"
+            <img
+                src="/public/images/icons/left-arrow.svg"
                 alt="Left Arrow"
                 width={24}
                 height={24}
@@ -64,7 +64,7 @@ export const CustomNextArrow = (props: any): JSX.Element => {
                 },
             }}
         >
-            <Image
+            <img
                 src="/images/icons/right-arrow.svg"
                 alt="Right Arrow"
                 width={24}
