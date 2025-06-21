@@ -45,6 +45,7 @@ const HomeHero: FC = () => {
             fill
             priority
             quality={90}
+            sizes="100vw"
             style={{
               objectFit: 'cover',
               objectPosition: 'center',
@@ -74,7 +75,7 @@ const HomeHero: FC = () => {
           sx={{
             height: '100%',
             alignItems: 'center',
-            flexDirection: { xs: 'column', md: 'row' }
+            flexDirection: { xs: 'column', md: 'row' },
           }}
         >
           <Grid item xs={12} md={7}>
@@ -93,7 +94,6 @@ const HomeHero: FC = () => {
                 <Typography
                   component="h1"
                   sx={{
-                    position: 'relative',
                     fontSize: { xs: '2.5rem', sm: '3.5rem', md: '5rem' },
                     letterSpacing: 1.5,
                     fontWeight: 'bold',
@@ -125,7 +125,7 @@ const HomeHero: FC = () => {
                     fontSize: { xs: '1rem', md: '1.1rem' },
                   }}
                 >
-                  {/* Add your description text here */}
+                  Litionix redefine la movilidad urbana con energía limpia y sin límites. Explora una nueva era de transporte eficiente y sostenible.
                 </Typography>
               </Box>
 
@@ -133,7 +133,7 @@ const HomeHero: FC = () => {
                 sx={{
                   '& button': {
                     mr: 2,
-                    mb: { xs: 2, md: 0 }
+                    mb: { xs: 2, md: 0 },
                   },
                   display: 'flex',
                   flexDirection: { xs: 'column', md: 'row' },
@@ -147,18 +147,6 @@ const HomeHero: FC = () => {
                   offset={-80}
                   duration={500}
                 >
-                  {/*  <StyledButton
-                    color="primary"
-                    size={isMobile ? 'medium' : 'large'}
-                    variant="contained"
-                   sx={{
-                    px: 4,
-                    py: 1.5,
-                    fontWeight: 'bold',
-                  }}
-                  >
-                    Conoce Más
-                  </StyledButton> */}
                 </ScrollLink>
               </Box>
             </Box>
@@ -166,7 +154,7 @@ const HomeHero: FC = () => {
 
           {!isMobile && (
             <Grid item xs={12} md={5}>
-              {/* Add any additional content or images for larger screens */}
+              {/* Aquí podrías agregar una imagen del producto */}
             </Grid>
           )}
         </Grid>
