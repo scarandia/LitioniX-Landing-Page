@@ -50,10 +50,11 @@ const ProductCard: FC<{ product: Product; priority?: boolean }> = ({ product, pr
                     alt={product.name}
                     fill
                     priority={priority}
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="product-image"
                     style={{
                         objectFit: 'cover',
-                        transition: 'transform 0.5s ease'
+                        transition: 'transform 0.5s ease',
                     }}
                 />
             </Box>
@@ -74,9 +75,8 @@ const ProductCard: FC<{ product: Product; priority?: boolean }> = ({ product, pr
                             }}
                         />
                     )}
-                    <Link href={`/productList?category=${encodeURIComponent(product.category)}`} passHref>
+                    <Link href={`/productList?category=${encodeURIComponent(product.category)}`}>
                         <Typography
-                            component="a"
                             sx={{
                                 ml: 2,
                                 fontWeight: 500,
@@ -85,7 +85,9 @@ const ProductCard: FC<{ product: Product; priority?: boolean }> = ({ product, pr
                                 '&:hover': {
                                     textDecoration: 'underline',
                                 },
+                                cursor: 'pointer',
                             }}
+                            onClick={(e) => e.stopPropagation()} // prevent outer card click
                         >
                             {product.category}
                         </Typography>

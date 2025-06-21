@@ -15,7 +15,7 @@ export const data: Array<Mentor> = [
     category: 'Encargada de Ventas',
     description:
       '',
-    contact: 'https://wa.me/70390831',
+    contact: 'https://wa.me/60746365',
   },
   {
     id: 3,

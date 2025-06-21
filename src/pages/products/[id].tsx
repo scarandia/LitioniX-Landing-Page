@@ -23,6 +23,8 @@ interface Product {
   images: string[];
   category: string;
   techSheetUrl?: string;
+  info?: { label: string; value: string }[];
+  comingSoon?: boolean;
 }
 
 const ProductDetail = (): JSX.Element => {
@@ -195,6 +197,22 @@ const ProductDetail = (): JSX.Element => {
               {product.name}
             </Typography>
 
+            {product.comingSoon && (
+              <Box
+                sx={{
+                  backgroundColor: theme.palette.warning.light,
+                  color: theme.palette.warning.contrastText,
+                  p: 2,
+                  borderRadius: '8px',
+                  mb: 3,
+                  fontWeight: 600,
+                  textAlign: 'center'
+                }}
+              >
+                Este modelo llegará próximamente. ¡Mantente atento para más novedades!
+              </Box>
+            )}
+
             <Typography variant="body1" paragraph mb={3}>
               Categoría: {product.category}
             </Typography>
@@ -208,6 +226,34 @@ const ProductDetail = (): JSX.Element => {
               Este producto pertenece a nuestra línea de {product.category.toLowerCase()}.
               Contáctenos para más información sobre especificaciones técnicas y disponibilidad.
             </Typography>
+
+            {/* Tabla Informacion del producto */}
+            {product.info && product.info.length > 0 && (
+              <Box
+                sx={{
+                  backgroundColor: theme.palette.mode === 'dark' ? '#1e1e1e' : '#fff',
+                  p: 3,
+                  borderRadius: '8px',
+                  mb: 4,
+                  border: `1px solid ${theme.palette.divider}`,
+                  boxShadow: theme.shadows[1],
+                }}
+              >
+                <Typography variant="h6" gutterBottom>
+                  Características Técnicas
+                </Typography>
+                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                  <tbody>
+                    {product.info.map((item, idx) => (
+                      <tr key={idx}>
+                        <td style={{ padding: '8px', fontWeight: 500, borderBottom: '1px solid #ccc' }}>{item.label}</td>
+                        <td style={{ padding: '8px', borderBottom: '1px solid #ccc' }}>{item.value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </Box>
+            )}
 
             <Box sx={{
               backgroundColor: theme.palette.mode === 'dark' ? 'rgba(25, 118, 210, 0.1)' : 'rgba(25, 118, 210, 0.05)',

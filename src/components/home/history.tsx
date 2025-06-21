@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { motion } from 'framer-motion'
+import Image from 'next/image';
 
 const HistorySection: FC = () => {
   const historyItems = [
@@ -12,15 +13,13 @@ const HistorySection: FC = () => {
       title: 'El Comienzo',
       content:
         'Un sueño en 2017 con una visión clara: impulsar la movilidad eléctrica en Bolivia con tecnología de calidad.',
-      icon: '🚀',
       color: '#59656F',
     },
     {
-      year: '2018',
+      year: '2020',
       title: 'Los Desafíos',
       content:
         'Los desafíos no tardaron en llegar. El mercado aún no estaba preparado y la pandemia nos obligó a replantear el camino.',
-      icon: '🚲',
       color: '#59656F',
     },
     {
@@ -28,7 +27,6 @@ const HistorySection: FC = () => {
       title: 'Un giro hacia la Sostenibilidad',
       content:
         'Nos adaptamos. Redirigimos nuestro enfoque a lo esencial: la comercialización de celdas de litio, apostando por energía limpia y eficiente.',
-      icon: '🌎',
       color: '#59656F',
     },
     {
@@ -36,7 +34,6 @@ const HistorySection: FC = () => {
       title: 'Innovación Continua',
       content:
         'Bolivia enfrenta una nueva realidad energética, y Litionix está preparada para responder. Regresamos con motos eléctricas confiables, duraderas y tecnológicas, comprometidas con un futuro más sostenible.',
-      icon: '⚡',
       color: '#59656F',
     },
   ]
@@ -92,13 +89,6 @@ const HistorySection: FC = () => {
               >
                 Nuestra Historia
               </Typography>
-
-              <Typography variant="body1" sx={{ fontSize: 18, mb: 3, lineHeight: 1.7 }}>
-                En 2017 comenzamos con una idea simple: hacer la movilidad más limpia, accesible y eficiente. Hoy,
-                Litionix es el resultado de años de aprendizaje, desafíos superados y un compromiso firme con la
-                sostenibilidad.
-              </Typography>
-
               <Box
                 sx={{
                   backgroundColor: 'rgba(78, 205, 196, 0.15)',
@@ -108,10 +98,72 @@ const HistorySection: FC = () => {
                   mb: 3,
                 }}
               >
+
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontSize: { xs: 25, md: 25 },
+                    fontWeight: 800,
+                    lineHeight: 1.2,
+                    mb: 3,
+                    position: 'relative',
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: -10,
+                      left: 0,
+                      width: 80,
+                      height: 4,
+                      backgroundColor: '#4ecdc4',
+                      borderRadius: 2,
+                    },
+                  }}
+                >
+                  Misión
+                </Typography>
+
                 <Typography variant="body1" sx={{ fontSize: 18, lineHeight: 1.7, fontStyle: 'italic' }}>
-                  &quot;Apostamos por el litio no solo porque es el futuro, sino porque Bolivia está en el corazón de su
-                  producción mundial. Creemos que el cambio comienza en casa: transformamos este recurso en soluciones
-                  reales para movernos, trabajar y vivir mejor.&quot;
+                  &quot;Impulsamos la innovación y sostenibilidad en la movilidad eléctrica de alta
+                  tecnología, diseñadas para quienes buscan eficiencia, durabilidad y calidad.
+                  Ofrecemos confiabilidad en nuestros productos y servicios, reforzando nuestro
+                  compromiso con nuestros clientes y el medio ambiente. .&quot;
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  backgroundColor: 'rgba(78, 205, 196, 0.15)',
+                  borderRadius: 3,
+                  p: 3,
+                  borderLeft: '4px solid #4ecdc4',
+                  mb: 3,
+                }}
+              >
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontSize: { xs: 25, md: 25 },
+                    fontWeight: 800,
+                    lineHeight: 1.2,
+                    mb: 3,
+                    position: 'relative',
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: -10,
+                      left: 0,
+                      width: 80,
+                      height: 4,
+                      backgroundColor: '#4ecdc4',
+                      borderRadius: 2,
+                    },
+                  }}
+                >
+                  Visión
+                </Typography>
+
+                <Typography variant="body1" sx={{ fontSize: 18, lineHeight: 1.7, fontStyle: 'italic' }}>
+                  &quot;Referencia en movilidad eléctrica: innovación, sostenibilidad y preferencia.
+                  Transformando el transporte urbano..&quot;
                 </Typography>
               </Box>
 
@@ -191,7 +243,7 @@ const HistorySection: FC = () => {
                         fontSize: 14,
                       }}
                     >
-                      {item.icon}
+
                     </Box>
 
                     <Box
@@ -220,18 +272,18 @@ const HistorySection: FC = () => {
                       >
                         <Box
                           component="span"
-                          sx={{
-                            fontSize: 28,
-                            width: 40,
-                            height: 40,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundColor: 'rgba(78, 205, 196, 0.2)',
-                            borderRadius: '50%',
-                          }}
+                        /* sx={{
+                          fontSize: 28,
+                          width: 40,
+                          height: 40,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          backgroundColor: 'rgba(78, 205, 196, 0.2)',
+                          borderRadius: '50%',
+                        }} */
                         >
-                          {item.icon}
+                          <Image src="/images/icons/gear.png" alt="Img_Historia" width={56} height={56} />
                         </Box>
                         {item.year} — {item.title}
                       </Typography>
