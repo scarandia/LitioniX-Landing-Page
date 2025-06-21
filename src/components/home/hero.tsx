@@ -40,7 +40,7 @@ const HomeHero: FC = () => {
           }}
         >
           <img
-            src="/images/Banners_Backgrounds/Banner/Banner7_edit.jpg"
+            src="public/images/Banners_Backgrounds/Banner/Banner7_edit.jpg"
             alt="Hero background"
             style={{
               position: 'absolute',
