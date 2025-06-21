@@ -37,6 +37,7 @@ const LocationSection: React.FC = () => {
 
   return (
     <Box sx={{
+      id: "contactos",
       backgroundColor: '#EFEAE7',
       py: { xs: 6, md: 8 },
       position: 'relative',
