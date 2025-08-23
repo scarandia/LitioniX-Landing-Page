@@ -36,7 +36,7 @@ const LocationSection: React.FC = () => {
   const address = 'Av. Calampampa 3002, Cochabamba';
 
   return (
-    <Box sx={{
+    <Box id="location" sx={{
       backgroundColor: '#EFEAE7',
       py: { xs: 6, md: 8 },
       position: 'relative',

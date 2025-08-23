@@ -29,7 +29,7 @@ interface Product {
 
 const ProductDetail = (): JSX.Element => {
   const router = useRouter();
-  const { id } = router.query;
+  const { id, category } = router.query;
   const theme = useTheme();
   const [selectedImage, setSelectedImage] = useState(0);
   const thumbnailContainerRef = useRef<HTMLDivElement>(null);
@@ -47,6 +47,7 @@ const ProductDetail = (): JSX.Element => {
     }
   };
 
+
   if (router.isFallback) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -63,14 +64,14 @@ const ProductDetail = (): JSX.Element => {
           <Typography variant="h4" color="error">
             Producto no encontrado
           </Typography>
-          <Button
+          {/* <Button
             variant="outlined"
             onClick={() => router.push('/productList')}
             sx={{ mt: 2 }}
             startIcon={<ArrowBackIcon />}
           >
             Volver a Productos
-          </Button>
+          </Button> */}
         </Box>
       </>
     );
@@ -86,7 +87,13 @@ const ProductDetail = (): JSX.Element => {
       }}>
         <Button
           variant="outlined"
-          onClick={() => router.push('/productList')}
+          onClick={() => {
+            if (category) {
+              router.push(`/productList?category=${category}`);
+            } else {
+              router.push('/productList');
+            }
+          }}
           sx={{ mb: 3 }}
           startIcon={<ArrowBackIcon />}
         >
@@ -244,72 +251,102 @@ const ProductDetail = (): JSX.Element => {
                 </Typography>
                 <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                   <tbody>
-                    {product.info.map((item, idx) => (
-                      <tr key={idx}>
-                        <td style={{ padding: '8px', fontWeight: 500, borderBottom: '1px solid #ccc' }}>{item.label}</td>
-                        <td style={{ padding: '8px', borderBottom: '1px solid #ccc' }}>{item.value}</td>
-                      </tr>
-                    ))}
+                    {product.info.map((item, idx) => {
+                      const isPrice =
+                        item.label.toLowerCase().includes('precio') ||
+                        item.label.toLowerCase().includes('precio2');
+
+                      return (
+                        <tr
+                          key={idx}
+                          style={{
+                            backgroundColor: isPrice ? '#fff3cd' : 'transparent', // Fondo amarillo suave para destacar
+                          }}
+                        >
+                          <td
+                            style={{
+                              padding: '8px',
+                              fontWeight: isPrice ? 700 : 500,
+                              color: isPrice ? '#d9534f' : 'inherit', // Texto rojo para precio
+                              borderBottom: '1px solid #ccc',
+                            }}
+                          >
+                            {item.label}
+                          </td>
+                          <td
+                            style={{
+                              padding: '8px',
+                              fontWeight: isPrice ? 700 : 'normal',
+                              color: isPrice ? '#d9534f' : 'inherit',
+                              borderBottom: '1px solid #ccc',
+                            }}
+                          >
+                            {item.value}
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
-              </Box>
-            )}
 
-            <Box sx={{
-              backgroundColor: theme.palette.mode === 'dark' ? 'rgba(25, 118, 210, 0.1)' : 'rgba(25, 118, 210, 0.05)',
-              p: 3,
-              borderRadius: '8px',
-              mb: 3
-            }}>
-              <Typography variant="h6" gutterBottom>
-                ¿Interesado en este producto?
-              </Typography>
-              <Typography variant="body2" paragraph>
-                Contáctenos para más información sobre disponibilidad, precios y especificaciones técnicas.
-              </Typography>
-            </Box>
+                <Box sx={{
+                  backgroundColor: theme.palette.mode === 'dark' ? 'rgba(25, 118, 210, 0.1)' : 'rgba(25, 118, 210, 0.05)',
+                  p: 3,
+                  borderRadius: '8px',
+                  mb: 3
+                }}>
+                  <Typography variant="h6" gutterBottom>
+                    ¿Interesado en este producto?
+                  </Typography>
+                  <Typography variant="body2" paragraph>
+                    Contáctenos para más información sobre disponibilidad, precios y especificaciones técnicas.
+                  </Typography>
+                </Box>
 
-            <Button
-              variant="contained"
-              size="large"
-              sx={{
-                px: 4,
-                py: 1.5,
-                fontSize: '1.1rem',
-                mt: 2,
-                boxShadow: theme.shadows[2],
-                '&:hover': {
-                  boxShadow: theme.shadows[4],
-                }
-              }}
-              onClick={() => {
-                router.push('/#contactos');
-              }}
-            >
-              Consultar sobre este producto
-            </Button>
-            {product.techSheetUrl && (
-              <Box mt={3}>
-                <Typography variant="subtitle1" fontWeight={600} gutterBottom>
-                  Ficha Técnica del Vehículo
-                </Typography>
                 <Button
-                  component="a"
-                  href={product.techSheetUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="outlined"
-                  color="primary"
+                  variant="contained"
+                  size="large"
                   sx={{
-                    textTransform: 'none',
-                    fontWeight: 500
+                    px: 4,
+                    py: 1.5,
+                    fontSize: '1.1rem',
+                    mt: 2,
+                    boxShadow: theme.shadows[2],
+                    '&:hover': {
+                      boxShadow: theme.shadows[4],
+                    }
+                  }}
+                  onClick={() => {
+                    router.push('/#contactos');
                   }}
                 >
-                  Descargar Ficha Técnica (PDF)
+                  Consultar sobre este producto
                 </Button>
+                {product.techSheetUrl && (
+                  <Box mt={3}>
+                    <Typography variant="subtitle1" fontWeight={600} gutterBottom>
+                      Ficha Técnica del Vehículo
+                    </Typography>
+                    <Button
+                      component="a"
+                      href={product.techSheetUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      variant="outlined"
+                      color="primary"
+                      sx={{
+                        textTransform: 'none',
+                        fontWeight: 500
+                      }}
+                    >
+                      Descargar Ficha Técnica (PDF)
+                    </Button>
+                  </Box>
+                )}
               </Box>
             )}
           </Grid>
+          )
         </Grid>
       </Box>
     </>

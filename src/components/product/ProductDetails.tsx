@@ -5,181 +5,154 @@ import { ColorVariant, Vehicle } from './ProductList';
 
 interface ProductDetailsProps {
     vehicle: Vehicle;
-    onVariantChange: (variant: ColorVariant) => void;
+    onVariantChange?: (variant: ColorVariant) => void;
+    isMobile?: boolean;
 }
 
-const ProductDetails = ({ vehicle, onVariantChange }: ProductDetailsProps): JSX.Element => {
+const ProductDetails = ({ vehicle, onVariantChange, isMobile }: ProductDetailsProps): JSX.Element => {
     const [selectedVariant, setSelectedVariant] = useState<ColorVariant>(
         vehicle.variants.find(v => v.colorCode === vehicle.defaultColor) || vehicle.variants[0]
     );
 
     const handleVariantClick = (variant: ColorVariant) => {
         setSelectedVariant(variant);
-        onVariantChange(variant);
+        onVariantChange?.(variant);
     };
 
     return (
         <Box
             sx={{
-                mt: { xs: -3, md: -1 },
                 width: '100%',
                 display: 'flex',
-                flexDirection: { xs: 'column-reverse', md: 'row' },
+                flexDirection: { xs: 'column', md: 'row' },
                 flexWrap: 'wrap',
-                justifyContent: 'center',
+                justifyContent: 'space-between',
                 px: { xs: 2, md: 8 },
                 color: '#000',
                 zIndex: 5,
-                alignItems: { xs: 'center', md: 'flex-start' },
-                minHeight: { xs: 'auto', md: '220px' },
-                gap: { xs: 2, md: 8 },
+                alignItems: { xs: 'center', md: 'flex-end' }, // Align to bottom
+                minHeight: { xs: 'auto', md: 'auto' },
+                gap: { xs: 0, md: 4 },
             }}
         >
-            {/* Left Section: Colores */}
+            {/* Velocidad Máxima - Moved lower (left side) */}
             <Box
                 sx={{
-                    flex: '1 1 300px',
+                    flex: '1 1 200px',
                     maxWidth: 400,
-                    mb: { xs: 2, md: 0 },
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: { xs: 'center', md: 'flex-start' },
-                    justifyContent: 'center',
+                    justifyContent: 'flex-end', // Align to bottom
                     textAlign: { xs: 'center', md: 'left' },
+                    order: { xs: 1, md: 1 },
+                    mb: { xs: -8, md: 0 },
+                    mt: { xs: 16, md: 0 },
+                    paddingBottom: { md: '0px' }
                 }}
             >
-                <Typography
-                    variant="h4"
-                    sx={{
-                        fontWeight: 'bold',
-                        mb: 1,
-                        fontSize: { xs: '1.5rem', md: '2.2rem', lg: '2.8rem' },
-                        lineHeight: 1.1,
-                        display: { xs: 'none', md: 'block' },
-                    }}
-                >
-                    Colores
-                </Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 1 }}>
+                <Box sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: { xs: 'center', md: 'flex-start' }
+                }}>
                     <Typography
                         variant="body2"
                         sx={{
                             color: '#444',
                             fontWeight: 500,
-                            fontSize: { xs: '1rem', md: '1.1rem' },
-                            mr: 1,
-                            display: { xs: 'none', md: 'block' },
+                            fontSize: { xs: '0.9rem', md: '1.1rem' },
+                            mb: 0.5
                         }}
                     >
-                        Disponible en :
+                        Velocidad Máxima
                     </Typography>
-                    {vehicle.variants.map((variant: ColorVariant, idx: number) => (
-                        <Box
-                            key={idx}
-                            onClick={() => handleVariantClick(variant)}
+                    <Box sx={{ display: 'flex', alignItems: 'baseline', mb: 0 }}>
+                        <Typography
+                            component="span"
                             sx={{
-                                width: 22,
-                                height: 22,
-                                borderRadius: '50%',
-                                backgroundColor: variant.colorCode,
-                                border: variant.colorCode === selectedVariant.colorCode
-                                    ? '2px solid #000'
-                                    : '1.5px solid #bbb',
-                                mx: 0.5,
-                                display: 'inline-block',
-                                cursor: 'pointer',
-                                '&:hover': {
-                                    border: '2px solid #666',
-                                },
+                                fontWeight: 700,
+                                fontSize: { xs: '1.4rem', md: '2rem' },
+                                mr: 0.5,
                             }}
-                        />
-                    ))}
+                        >
+                            {vehicle.speed.split(' ')[0]}
+                        </Typography>
+                        <Typography
+                            component="span"
+                            sx={{
+                                color: '#888',
+                                fontSize: { xs: '0.9rem', md: '1.1rem' },
+                                fontWeight: 400,
+                            }}
+                        >
+                            {vehicle.speed.split(' ').slice(1).join(' ')}
+                        </Typography>
+                    </Box>
                 </Box>
             </Box>
 
-            {/* Right Section: Velocidad Máxima and Autonomía */}
+            {/* Autonomía - Kept in original position (right side) */}
             <Box
                 sx={{
                     flex: '1 1 260px',
-                    maxWidth: 320,
+                    maxWidth: { xs: '100%', md: 320 },
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: { xs: 'center', md: 'flex-end' },
-                    justifyContent: { xs: 'center', md: 'flex-start' },
+                    justifyContent: { xs: 'center', md: 'flex-start' }, // Original alignment
                     textAlign: { xs: 'center', md: 'right' },
                     gap: 2,
-                    mt: { xs: 0, md: -4 },
-                    mb: { xs: 2, md: 0 },
+                    mb: { xs: 5, md: 0 },
+                    px: { xs: 1, md: 0 },
+                    order: { xs: 2, md: 2 }
                 }}
             >
-                <Typography
-                    variant="body2"
-                    sx={{
-                        color: '#444',
-                        fontWeight: 500,
-                        fontSize: { xs: '1rem', md: '1.1rem' },
-                        mb: 0,
-                    }}
-                >
-                    Velocidad Máxima
-                </Typography>
-                <Box sx={{ display: 'flex', alignItems: 'baseline', mb: 0 }}>
+                <Box sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: { xs: 'center', md: 'flex-end' }
+                }}>
                     <Typography
-                        component="span"
+                        variant="body2"
                         sx={{
-                            fontWeight: 700,
-                            fontSize: { xs: '1.3rem', md: '2rem' },
-                            mr: 1,
+                            color: '#444',
+                            fontWeight: 500,
+                            fontSize: { xs: '0.9rem', md: '1.1rem' },
+                            mb: 0.5,
                         }}
                     >
-                        {vehicle.speed.split(' ')[0]}
+                        Autonomía{' '}
+                        <span style={{
+                            fontSize: '0.7rem',
+                            color: '#aaa',
+                            fontWeight: 600,
+                            display: isMobile ? 'block' : 'inline'
+                        }}>
+                        </span>
                     </Typography>
-                    <Typography
-                        component="span"
-                        sx={{
-                            color: '#888',
-                            fontSize: { xs: '1rem', md: '1.1rem' },
-                            fontWeight: 400,
-                        }}
-                    >
-                        {vehicle.speed.split(' ').slice(1).join(' ')}
-                    </Typography>
-                </Box>
-                <Typography
-                    variant="body2"
-                    sx={{
-                        color: '#444',
-                        fontWeight: 500,
-                        fontSize: { xs: '1rem', md: '1.1rem' },
-                        mb: 0.5,
-                    }}
-                >
-                    Autonomía{' '}
-                    <span style={{ fontSize: '0.8rem', color: '#aaa', fontWeight: 600 }}>
-                        (2 BATERÍAS)
-                    </span>
-                </Typography>
-                <Box sx={{ display: 'flex', alignItems: 'baseline' }}>
-                    <Typography
-                        component="span"
-                        sx={{
-                            fontWeight: 700,
-                            fontSize: { xs: '1.3rem', md: '2rem' },
-                            mr: 1,
-                        }}
-                    >
-                        {vehicle.autonomy.split(' ')[0]}
-                    </Typography>
-                    <Typography
-                        component="span"
-                        sx={{
-                            color: '#888',
-                            fontSize: { xs: '1rem', md: '1.1rem' },
-                            fontWeight: 400,
-                        }}
-                    >
-                        {vehicle.autonomy.split(' ').slice(1).join(' ')}
-                    </Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'baseline' }}>
+                        <Typography
+                            component="span"
+                            sx={{
+                                fontWeight: 700,
+                                fontSize: { xs: '1.4rem', md: '2rem' },
+                                mr: 0.5,
+                            }}
+                        >
+                            {vehicle.autonomy.split(' ')[0]}
+                        </Typography>
+                        <Typography
+                            component="span"
+                            sx={{
+                                color: '#888',
+                                fontSize: { xs: '0.9rem', md: '1.1rem' },
+                                fontWeight: 400,
+                            }}
+                        >
+                            {vehicle.autonomy.split(' ').slice(1).join(' ')}
+                        </Typography>
+                    </Box>
                 </Box>
             </Box>
         </Box>

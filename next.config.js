@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  output: 'export', 
   images: {
-    unoptimized: true, //  Desactivar la optimización de imágenes para Netlify
+    unoptimized: true,
   },
 };
 

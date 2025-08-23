@@ -106,7 +106,7 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
 
   return {
     ...initialProps,
-    emotionStyleTags,
+    emotionStylesTags: emotionStyleTags,
   }
 }
 

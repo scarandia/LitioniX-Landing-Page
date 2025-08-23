@@ -108,12 +108,17 @@ const HomePopularCourse = (): JSX.Element => {
       <Box
         sx={{
           position: 'relative',
-          width: '100%',
-          height: '100vh',
+          width: { xs: '100%', md: '100%', lg: '100co%' }, // Responsive width
+          maxWidth: '3000px', // Prevent it from getting too wide on large screens
+          height: '90vh',
+          minHeight: '600px', // Ensure minimum height
           marginTop: 8,
+          marginX: 'auto',
           backgroundColor: '#042A3F',
           backgroundImage: 'linear-gradient(to top, #021C29 0%, #042A3F 100%)',
           borderTop: '1px solid rgba(78, 205, 196, 0.15)',
+          borderRadius: { xs: 0, md: 3 },
+          overflow: 'hidden',
         }}
       >
         <FullScreenSlider />

@@ -89,7 +89,7 @@ const ProductCard: FC<{ product: Product; priority?: boolean }> = ({ product, pr
                             }}
                             onClick={(e) => e.stopPropagation()} // prevent outer card click
                         >
-                            {product.category}
+                            {/* {product.category} */}
                         </Typography>
                     </Link>
                 </Box>

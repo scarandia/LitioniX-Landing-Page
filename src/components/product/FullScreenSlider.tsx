@@ -8,6 +8,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ProductDetails from './ProductDetails';
 import { LoadingScreen } from '../others/LoadingScreen';
 import { vehicles } from './ProductList';
+import { IconButton, useMediaQuery, useTheme, Typography } from '@mui/material';
 
 const FullScreenSlider = (): JSX.Element => {
     const sliderRef = useRef<Slider | null>(null);
@@ -15,6 +16,8 @@ const FullScreenSlider = (): JSX.Element => {
     const [isMobile, setIsMobile] = useState(false);
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
     const [currentVariantImages, setCurrentVariantImages] = useState<Record<number, string>>({});
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
     useEffect(() => {
         setIsMounted(true);
@@ -56,6 +59,8 @@ const FullScreenSlider = (): JSX.Element => {
         }));
     };
 
+    const currentVehicle = vehicles[currentSlideIndex];
+
     if (!isMounted) {
         return (
             <Box sx={{
@@ -73,47 +78,45 @@ const FullScreenSlider = (): JSX.Element => {
 
     return (
         <Box sx={{
-            width: { xs: '100%', md: '100vw' },
-            height: { xs: '100vh', md: '100vh' },
+            width: '100vw',
+            height: { xs: '90vh', md: '90vh' },
+            minHeight: '600px',
             overflow: 'hidden',
             position: 'relative',
             backgroundColor: '#EFEAE7',
-            pt: { xs: 10, md: 0 },
-            margin: { xs: 0, md: 'auto' },
-            borderRadius: { xs: 0, md: 4 },
-            boxShadow: { xs: 'none', md: 3 },
+            pt: { xs: 2, md: 0 },
+            margin: 'auto',
+            left: '50%',
+            right: '50%',
+            marginLeft: '-50vw',
+            marginRight: '-50vw',
         }}>
-            {/* Background Image */}
+            {/* Background Image - Behind everything */}
             {isMounted && (
                 <Box sx={{
                     position: 'absolute',
-                    top: { xs: '10%', md: '-10%' },
-                    left: { xs: '-10%', md: '-10%' },
-                    right: { xs: '-10%', md: '-10%' },
-                    bottom: { xs: 'auto', md: '-10%' },
-                    height: { xs: '60%', md: 'auto' },
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: { xs: '140%', sm: '120%', md: '100%', lg: '110%' }, // más grande en móviles
+                    height: { xs: '70%', sm: '100%', md: '110%' }, // más alto en móviles
                     zIndex: 0,
-                    opacity: 0.45,
+                    opacity: 0.15,
                     pointerEvents: 'none',
                 }}>
-                    <div style={{
-                        position: 'relative',
-                        width: '100%',
-                        height: '100%',
-                    }}>
-                        <Image
-                            src="/images/Banners_Backgrounds/Marca_NoBG.png"
-                            alt="Background Brand"
-                            fill
-                            style={{
-                                objectFit: 'contain',
-                                objectPosition: 'center',
-                            }}
-                            quality={100}
-                            priority
-                        />
-                    </div>
+                    <Image
+                        src="/images/Banners_Backgrounds/Marca_NoBG.png"
+                        alt="Background Brand"
+                        fill
+                        style={{
+                            objectFit: 'contain',
+                            objectPosition: 'center'
+                        }}
+                        quality={100}
+                        priority
+                    />
                 </Box>
+
             )}
 
             {/* Navigation Arrows */}
@@ -121,7 +124,7 @@ const FullScreenSlider = (): JSX.Element => {
                 display: { xs: 'none', md: 'flex' },
                 position: 'absolute',
                 top: '50%',
-                left: 90,
+                left: 40,
                 transform: 'translateY(-50%)',
                 zIndex: 11,
                 pointerEvents: 'none',
@@ -134,7 +137,7 @@ const FullScreenSlider = (): JSX.Element => {
                 display: { xs: 'none', md: 'flex' },
                 position: 'absolute',
                 top: '50%',
-                right: 90,
+                right: 40,
                 transform: 'translateY(-50%)',
                 zIndex: 11,
                 pointerEvents: 'none',
@@ -172,46 +175,164 @@ const FullScreenSlider = (): JSX.Element => {
                         sx={{
                             position: 'relative',
                             width: '100%',
-                            height: '100vh',
+                            height: { xs: '85vh', md: '90vh' },
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            zIndex: 1,
-                            pt: { xs: 6, md: 0 },
+                            zIndex: 2,
+                            pt: { xs: 1, md: 0 },
+                            pb: { xs: 8, md: 0 },
                         }}
                     >
+                        {/* Product Image - Lowered position */}
                         <Box
                             sx={{
                                 position: 'relative',
-                                width: { xs: '80%', md: '50%' },
-                                height: { xs: '45%', md: '75%' },
+                                width: { xs: '95%', sm: '90%', md: '80%', lg: '70%' },
+                                height: { xs: '40%', sm: '45%', md: '55%', lg: '65%' }, // Lower height
+                                maxWidth: '600px',
+                                maxHeight: '450px',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 margin: '0 auto',
+                                mb: { xs: 6, md: 8 }, // Increased margin to lower image more
+                                zIndex: 3,
+                                marginTop: { xs: 'auto', md: 'auto' } // Push image down
                             }}
                         >
-                            <div style={{ position: 'relative', width: '100%', height: '500px' }}>
+                            <Box
+                                sx={{
+                                    position: 'relative',
+                                    width: '100%',
+                                    height: '100%',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                }}
+                            >
                                 <Image
-                                    src={currentVariantImages[index] ||
-                                        vehicle.variants.find(v => v.colorCode === vehicle.defaultColor)?.imageUrl ||
-                                        vehicle.variants[0].imageUrl}
+                                    src={
+                                        currentVariantImages[index] ||
+                                        vehicle.variants.find((v) => v.colorCode === vehicle.defaultColor)?.imageUrl ||
+                                        vehicle.variants[0].imageUrl
+                                    }
                                     alt={vehicle.name}
                                     fill
-                                    sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 40vw"
-                                    style={{ objectFit: 'contain' }}
+                                    sizes="(max-width: 600px) 95vw, (max-width: 900px) 80vw, (max-width: 1200px) 70vw, 60vw"
+                                    style={{
+                                        objectFit: 'contain',
+                                        objectPosition: 'center',
+                                        marginTop: '100px', // Valor base
+                                    }}
                                     quality={100}
+                                    priority={index === 0}
                                 />
-                            </div>
+
+                                <style jsx>{`@media (max-width: 768px) {:global(img[alt="${vehicle.name}"]) {margin-top: 120px; /* Baja la imagen en móviles */
+    }
+  }
+`}</style>
+
+                            </Box>
                         </Box>
-                        <ProductDetails
-                            vehicle={vehicle}
-                            onVariantChange={handleVariantChange}
-                        />
+
+                        {/* Product Details - Stacked layout (Velocidad above Autonomía) */}
+                        <Box sx={{
+                            position: 'absolute',
+                            bottom: { xs: 40, md: 50 },
+                            left: 0,
+                            right: 0,
+                            zIndex: 4,
+                        }}>
+                            <ProductDetails
+                                vehicle={vehicle}
+                                onVariantChange={handleVariantChange}
+                                isMobile={isMobile}
+                            />
+                        </Box>
                     </Box>
                 ))}
             </Slider>
+
+            {/* Permanent Color Selector - Positioned above the specs */}
+            <Box sx={{
+                position: 'absolute',
+                bottom: { xs: 100, sm: 110, md: 120 },
+                left: 0,
+                right: 0,
+                zIndex: 20,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 1,
+                px: 2,
+            }}>
+                <Typography
+                    variant="body2"
+                    sx={{
+                        color: '#000',
+                        fontWeight: 600,
+                        fontSize: { xs: '0.8rem', md: '1rem' },
+                        mb: { xs: 0.5, md: 1 },
+                        textAlign: 'center'
+                    }}
+                >
+                    Seleccionar Color
+                </Typography>
+                <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: { xs: 0.8, md: 2 },
+                    flexWrap: 'wrap',
+                    backgroundColor: 'rgba(255,255,255,0.95)',
+                    padding: { xs: '6px 10px', md: '12px 16px' },
+                    borderRadius: '25px',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                    maxWidth: { xs: '95%', md: '90%' },
+                    margin: '0 auto',
+                }}>
+                    {currentVehicle?.variants.map((variant, idx) => {
+                        const isSelected = currentVariantImages[currentSlideIndex] === variant.imageUrl;
+                        return (
+                            <Box
+                                key={idx}
+                                sx={{
+                                    width: { xs: 30, sm: 35, md: 40 },
+                                    height: { xs: 30, sm: 35, md: 40 },
+                                    borderRadius: '50%',
+                                    backgroundColor: variant.colorCode,
+                                    border: isSelected ? '3px solid #000' : '2px solid rgba(0,0,0,0.3)',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.2s ease',
+                                    '&:hover': {
+                                        transform: 'scale(1.15)',
+                                        border: '3px solid #000',
+                                    },
+                                    position: 'relative',
+                                }}
+                                onClick={() => handleVariantChange(variant)}
+                            >
+                                {isSelected && (
+                                    <Box
+                                        sx={{
+                                            position: 'absolute',
+                                            top: -4,
+                                            right: -4,
+                                            width: { xs: 10, md: 12 },
+                                            height: { xs: 10, md: 12 },
+                                            borderRadius: '50%',
+                                            backgroundColor: '#000',
+                                            border: '2px solid #fff',
+                                        }}
+                                    />
+                                )}
+                            </Box>
+                        );
+                    })}
+                </Box>
+            </Box>
         </Box>
     );
 };

@@ -2,8 +2,8 @@
 import React, { FC, useState, useEffect } from 'react';
 import { Box, Grid, Container, Typography, useTheme, useMediaQuery } from '@mui/material';
 import { Link as ScrollLink } from 'react-scroll';
-import { StyledButton } from '@/components/styled-button';
-import Image from 'next/image';
+/* import { StyledButton } from '@/components/styled-button';
+import Image from 'next/image'; */
 
 const HomeHero: FC = () => {
   const theme = useTheme();
@@ -47,7 +47,7 @@ const HomeHero: FC = () => {
               top: 0,
               left: 0,
               width: '100%',
-              height: '100%',
+              height: '90%',
               objectFit: 'cover',
               objectPosition: 'center',
               zIndex: 0,
